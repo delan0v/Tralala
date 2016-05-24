@@ -14,7 +14,7 @@ public class View extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-
+        //asfojhica
         VerticalLayout verticalLayout = new VerticalLayout();
         verticalLayout.setMargin(true);
         verticalLayout.setSpacing(true);
