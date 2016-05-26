@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="568d5da9-1196-4d3c-bc08-a507b8ae75a0" name="Default" comment="trzeciCosSieJebie">
+    <list default="true" id="568d5da9-1196-4d3c-bc08-a507b8ae75a0" name="Default" comment="czwartyiCosSieJebie">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/StartView.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/StartView.java" />
     </list>
@@ -935,7 +935,7 @@
       <workItem from="1464196175318" duration="1896000" />
       <workItem from="1464207007929" duration="676000" />
       <workItem from="1464273751679" duration="894000" />
-      <workItem from="1464286653438" duration="1642000" />
+      <workItem from="1464286653438" duration="1656000" />
     </task>
     <task id="LOCAL-00001" summary="Pierwszy commit i push - początek projektu">
       <created>1464074850816</created>
@@ -972,11 +972,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464288604107</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="czwartyiCosSieJebie">
+      <created>1464288686831</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1464288686831</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23916000" />
+    <option name="totallyTimeSpent" value="23930000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1042,7 +1049,8 @@
     <MESSAGE value="Drugi commit" />
     <MESSAGE value="drugi" />
     <MESSAGE value="trzeciCosSieJebie" />
-    <option name="LAST_COMMIT_MESSAGE" value="trzeciCosSieJebie" />
+    <MESSAGE value="czwartyiCosSieJebie" />
+    <option name="LAST_COMMIT_MESSAGE" value="czwartyiCosSieJebie" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
