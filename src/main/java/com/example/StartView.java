@@ -18,6 +18,6 @@ public class StartView extends View {
         setSizeFull();
     }
 
-
+//jebac legie
 }
 
