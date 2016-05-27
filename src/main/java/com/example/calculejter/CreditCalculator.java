@@ -51,13 +51,14 @@ public class CreditCalculator extends VerticalLayout implements View {
     }
 
     public double calculateCredit(double cash, int month, double percent) {
-        if (month > 0)
-            return cash + cash * percent / 100;
-        else {
+
+
+        if (month > 0) {
             cash += cash * percent / 100;
             month--;
             return calculateCredit(cash, month, percent);
-        }
+        } else return cash + cash * percent / 100;
+
     }
 
     @Override

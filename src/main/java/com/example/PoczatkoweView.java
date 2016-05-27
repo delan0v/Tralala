@@ -8,7 +8,6 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
 
 /**
  * Created by Błażej on 23.05.2016.
@@ -19,7 +18,6 @@ public class PoczatkoweView extends UI {
     public static final String KALKULATOR = "Kalkulator_kredytowy";
     public static final String MAINVIEW = "Menu_glowne";
     public static final String OFERTY = "Oferty";
-    VerticalLayout firstVerticalLayout = new VerticalLayout();
     private Navigator navigator;
 
 
