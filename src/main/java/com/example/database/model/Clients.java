@@ -6,7 +6,7 @@ import javax.persistence.*;
 // na tabelkę z bazy danych.
 //Adnotacja @Table oznacza tabelkę w bazie danych: name = "nazwa tabelki w bazie"
 @Entity
-@Table(name = "clients")
+@Table(name = "CLIENTS")
 public class Clients {
 
     // Id ponieważ w bazie danych oznaczyłem tę kolumne jako PRIVATE KEY czyli
@@ -23,7 +23,7 @@ public class Clients {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "surname")
+    @Column(name = "surename")
     private String surname;
 
     // NIEZBĘDNE GETTERY i SETTERY oraz EQUALS HASHCODE i TOSTRING

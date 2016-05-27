@@ -4,17 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.example.database.model.Clients;
 import com.example.database.repository.ClientsRepository;
 import com.example.database.service.ClientsService;
 
-/**
- * Created by pkaczmar on 2016-05-27.
- */
 @Service
-@Transactional
 public class ClientsServiceImpl implements ClientsService {
 
     @Autowired

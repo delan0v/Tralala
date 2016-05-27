@@ -1,0 +1,8 @@
+### plik .gitignore pozwala na dodanie nazw folderów i plików jakie będą igonorowane podczas kommitowania :)
+/target
+/.mvn
+/.idea
+*.iml
+application.properties
+workplace.xml
+/classes
