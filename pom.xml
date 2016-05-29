@@ -6,7 +6,7 @@
     <groupId>com.example</groupId>
     <artifactId>tralala</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
 
     <name>Tralala</name>
     <description>first prodzekt</description>
