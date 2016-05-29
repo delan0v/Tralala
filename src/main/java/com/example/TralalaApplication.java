@@ -14,9 +14,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class TralalaApplication {
 
+    public static void main(String[] args) {
 
-	public static void main(String[] args) {
-
-		SpringApplication.run(TralalaApplication.class, args);
-	}
+        SpringApplication.run(TralalaApplication.class, args);
+    }
 }
