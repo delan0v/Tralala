@@ -3,6 +3,5 @@
 /.mvn
 /.idea
 *.iml
-application.properties
 workplace.xml
 /classes
