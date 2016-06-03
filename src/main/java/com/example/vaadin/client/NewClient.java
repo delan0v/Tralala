@@ -16,13 +16,13 @@ import org.springframework.context.annotation.Scope;
 @SpringView(name = ViewNames.NEW_ACCOUNT)
 @Scope("prototype")
 public class NewClient extends VerticalLayout implements View {
-    Button out;
-    Button newUser;
-    TextArea login;
-    TextArea password;
-    TextArea name;
-    TextArea surname;
-    TextArea number;
+    private Button out;
+    private Button newUser;
+    private TextArea login;
+    private TextArea password;
+    private TextArea name;
+    private TextArea surname;
+    private TextArea number;
 
     public NewClient() {
         setMargin(true);
