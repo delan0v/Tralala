@@ -8,4 +8,6 @@ public interface ViewNames {
     String KALKULATOR_VIEW = "calculator";
     String MAINVIEW_VIEW = "";
     String OFERTY_VIEW = "offerts";
+    String ACCOUNT="account";
+    String NEW_ACCOUNT="new account";
 }

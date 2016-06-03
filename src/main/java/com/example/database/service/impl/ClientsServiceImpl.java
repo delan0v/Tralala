@@ -25,6 +25,10 @@ public class ClientsServiceImpl implements ClientsService {
         Clients newClient = clientsRepository.getOne(client.getId());
         newClient.setName(client.getName());
         newClient.setSurname(client.getSurname());
+        newClient.setNumber(client.getNumber());
+        newClient.setLogin(client.getLogin());
+        newClient.setPassword(client.getPassword());
+        newClient.setBallance(client.getBallance());
         clientsRepository.save(newClient);
     }
 

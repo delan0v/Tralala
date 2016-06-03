@@ -26,8 +26,47 @@ public class Clients {
     @Column(name = "surename")
     private String surname;
 
-    // NIEZBĘDNE GETTERY i SETTERY oraz EQUALS HASHCODE i TOSTRING
+    @Column(name="number")
+    private Integer number;
+
+    @Column(name="login")
+    private String login;
+
+    @Column(name="password")
+    private Integer password;
+
+    @Column(name="ballance")
+    private Double ballance;
+
+    //NIEZBĘDNE GETTERY i SETTERY oraz EQUALS HASHCODE i TOSTRING
     // Obowiązkowe pola każdego obiektu.
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public Integer getPassword() {
+        return password;
+    }
+
+    public void setPassword(Integer password) {
+        this.password = password;
+    }
+
+    public Double getBallance() {
+        return ballance;
+    }
+
+    public void setBallance(Double ballance) {
+        this.ballance = ballance;
+    }
+    public Integer getNumber() {return number;}
+
+    public void setNumber(Integer number) {this.number = number;}
+
     public Integer getId() {
         return id;
     }
@@ -52,6 +91,7 @@ public class Clients {
         this.surname = surname;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -65,6 +105,14 @@ public class Clients {
             return false;
         if (name != null ? !name.equals(clients.name) : clients.name != null)
             return false;
+        if (number!=null ? !number.equals(clients.number) : clients.number!=null)
+            return false;
+        if (login!=null ? !login.equals(clients.login) : clients.login!=null)
+            return false;
+        if (password!=null ? !password.equals(clients.password) : clients.password!=null)
+            return false;
+        if (ballance!=null ? !ballance.equals(clients.ballance) : clients.ballance!=null)
+            return false;
         return surname != null ? surname.equals(clients.surname) : clients.surname == null;
 
     }
@@ -74,6 +122,10 @@ public class Clients {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (surname != null ? surname.hashCode() : 0);
+        result = 31 * result +(number !=null ? number.hashCode():0);
+        result = 31 * result +(login !=null ? login.hashCode():0);
+        result = 31 * result +(password !=null ? password.hashCode():0);
+        result = 31 * result +(ballance !=null ? ballance.hashCode():0);
         return result;
     }
 
@@ -90,6 +142,22 @@ public class Clients {
                 ", surname='"
                 + surname
                 + '\''
+                +
+                ", number='"
+                +number
+                +'\''
+                +
+                ", login='"
+                +login
+                +'\''
+                +
+                ", password='"
+                +password
+                +'\''
+                +
+                ", ballance='"
+                +ballance
+                +'\''
                 +
                 '}';
     }

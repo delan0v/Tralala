@@ -1,15 +1,12 @@
 package com.example.vaadin.firstViev;
 
+import com.vaadin.ui.*;
 import org.springframework.context.annotation.Scope;
 
 import com.example.vaadin.ViewNames;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.VerticalLayout;
 
 @SpringView(name = ViewNames.MAINVIEW_VIEW)
 @Scope("prototype")
@@ -18,7 +15,7 @@ public class FirstViev extends VerticalLayout implements View {
     private Button calculator;
     private Button offers;
     private Button clientFromDB;
-    private TextField firstMenu;
+    private Label firstMenu;
 
     public FirstViev() {
         setMargin(true);
@@ -27,7 +24,7 @@ public class FirstViev extends VerticalLayout implements View {
     }
 
     private void initView() {
-        firstMenu = new TextField("Witaj na stronie naszego banku\nWybier usługę:");
+        firstMenu = new Label();
         calculator = new Button("Kalkulator kredytowy");
         clientFromDB = new Button("Pokaż wiersze z bazy danych <3 ");
         clientFromDB.addClickListener(new Button.ClickListener() {
@@ -49,6 +46,7 @@ public class FirstViev extends VerticalLayout implements View {
                 getUI().getNavigator().navigateTo(ViewNames.OFERTY_VIEW);
             }
         });
+        firstMenu.setValue("Witaj na stronie naszego banku\nWybierz usługę:");
 
         addComponent(firstMenu);
         addComponent(calculator);

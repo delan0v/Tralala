@@ -1,5 +1,8 @@
 package com.example;
 
+import com.example.vaadin.client.ClientsAccount;
+import com.example.vaadin.client.NewClient;
+import com.vaadin.navigator.View;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.vaadin.ViewNames;
@@ -26,6 +29,10 @@ public class PoczatkoweView extends UI {
     private ClientsView clientsView;
     @Autowired
     private ContoOfferts contoOfferts;
+    @Autowired
+    private ClientsAccount clientsAccount;
+    @Autowired
+    private NewClient newClient;
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -36,6 +43,8 @@ public class PoczatkoweView extends UI {
         navigator.addView(ViewNames.KALKULATOR_VIEW, creditCalculator);
         navigator.addView(ViewNames.CLIENTS_VIEW, clientsView);
         navigator.addView(ViewNames.OFERTY_VIEW, contoOfferts);
+        navigator.addView(ViewNames.ACCOUNT,clientsAccount);
+        navigator.addView(ViewNames.NEW_ACCOUNT,newClient);
     }
 
 }

@@ -33,7 +33,7 @@ public class CreditCalculator extends VerticalLayout implements View {
         out.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
-                getUI().getNavigator().navigateTo(ViewNames.KALKULATOR_VIEW);
+                getUI().getNavigator().navigateTo(ViewNames.MAINVIEW_VIEW);
             }
         });
         textCash = new TextArea("Podaj kwotę pożyczki");
@@ -45,7 +45,10 @@ public class CreditCalculator extends VerticalLayout implements View {
             @Override
             public void buttonClick(Button.ClickEvent event2) {
                 double money = calculateCredit(Double.parseDouble(textCash.getValue()), Integer.parseInt(textTime.getValue()), Double.parseDouble(textPercent.getValue()));
-                textEquals.setValue(Double.toString(money));
+                if (money!=-1)
+                    textEquals.setValue(Double.toString(money));
+                else
+                    textEquals.setValue("Podałeś złe wartości");
             }
         });
         addComponent(out);
@@ -58,12 +61,16 @@ public class CreditCalculator extends VerticalLayout implements View {
 
     public double calculateCredit(double cash, int month, double percent) {
 
-
-        if (month > 0) {
+        if((cash<=0)||(0>month)||(13<month)||(percent<0)){
+            return -1;
+        }
+        else if (month > 1) {
             cash += cash * percent / 100;
             month--;
             return calculateCredit(cash, month, percent);
-        } else return cash + cash * percent / 100;
+        }
+
+        else return cash + cash * percent / 100;
 
     }
 
