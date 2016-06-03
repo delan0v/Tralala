@@ -1,6 +1,7 @@
 package com.example.database.model;
 
 import javax.persistence.*;
+import javax.print.attribute.IntegerSyntax;
 
 //Adnotacja @Entity mówi Springowi że ta klasa jest częscią ORM czyli ma tę klasę mapować
 // na tabelkę z bazy danych.
@@ -36,7 +37,7 @@ public class Clients {
     private Integer password;
 
     @Column(name="ballance")
-    private Double ballance;
+    private Integer ballance;
 
     //NIEZBĘDNE GETTERY i SETTERY oraz EQUALS HASHCODE i TOSTRING
     // Obowiązkowe pola każdego obiektu.
@@ -56,11 +57,11 @@ public class Clients {
         this.password = password;
     }
 
-    public Double getBallance() {
+    public Integer getBallance() {
         return ballance;
     }
 
-    public void setBallance(Double ballance) {
+    public void setBallance(Integer ballance) {
         this.ballance = ballance;
     }
     public Integer getNumber() {return number;}
