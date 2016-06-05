@@ -15,6 +15,8 @@ public interface ClientsService {
 
     void removeClient(Clients client);
 
+    public Integer searchClient(String surname, String password);
+
     List<Clients> getAllClients();
 
 }

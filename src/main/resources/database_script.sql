@@ -3,6 +3,8 @@ CREATE TABLE clients (
   id       INTEGER                NOT NULL,
   name     CHARACTER VARYING(255) NOT NULL,
   surename CHARACTER VARYING(255) NOT NULL
+
+
 );
 -- Przypisanie właściciela tabeli
 ALTER TABLE clients
@@ -29,9 +31,9 @@ ALTER TABLE ONLY clients
 ALTER TABLE ONLY clients
   ADD CONSTRAINT clients_pkey PRIMARY KEY (id);
 -- Dodanie przykładowych wartości do bazy, aby coś jużtam było :)
-INSERT INTO clients VALUES (1, 'Jan', 'Nowak');
+INSERT INTO clients VALUES (1, 'Jan', 'Nowak','0256125261','JanNiezbędny','jan09',300);
 INSERT INTO clients VALUES (2, 'Jan', 'Kowalski');
-INSERT INTO clients VALUES (3, 'Żaneta', 'Darmodam');
+INSERT INTO clients VALUES (3, 'Żaneta', 'Darmodam','0700880007');
 INSERT INTO clients VALUES (4, 'Agata', 'LoveAndSex');
 --Ustawiam wartość sekwencji, ponieważ sam dodałem 4 wartości i od tej 4 musi teraz dalej dodawać.
 SELECT pg_catalog.setval('id_clients_seq', 4, TRUE);

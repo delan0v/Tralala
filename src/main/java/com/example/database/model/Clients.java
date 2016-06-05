@@ -34,7 +34,7 @@ public class Clients {
     private String login;
 
     @Column(name="password")
-    private Integer password;
+    private String password;
 
     @Column(name="ballance")
     private Integer ballance;
@@ -49,11 +49,11 @@ public class Clients {
         this.login = login;
     }
 
-    public Integer getPassword() {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(Integer password) {
+    public void setPassword(String password) {
         this.password = password;
     }
 

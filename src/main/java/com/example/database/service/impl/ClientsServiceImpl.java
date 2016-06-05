@@ -2,6 +2,7 @@ package com.example.database.service.impl;
 
 import java.util.List;
 
+import com.sun.deploy.util.SessionState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,4 +42,17 @@ public class ClientsServiceImpl implements ClientsService {
     public List<Clients> getAllClients() {
         return clientsRepository.findAll();
     }
+    @Override
+    public Integer searchClient(String surname, String password) {
+        for (int i = 1; i < getAllClients().size(); i++) {
+            if ((clientsRepository.findOne(i).getSurname().equals(surname)) &&
+                    (clientsRepository.findOne(i).getPassword().equals(password)))
+                    {
+                return i;}
+
+    }
+        return -1;
+    }
+
 }
+

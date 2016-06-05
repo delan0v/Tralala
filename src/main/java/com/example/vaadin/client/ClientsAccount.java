@@ -4,10 +4,8 @@ import com.example.vaadin.ViewNames;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.TextArea;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
 /**
@@ -15,13 +13,16 @@ import org.springframework.context.annotation.Scope;
  */
 @SpringView(name = ViewNames.ACCOUNT)
 @Scope("prototype")
+
 public class ClientsAccount extends VerticalLayout implements View {
     private Button out;
     private Button newUser;
-    //private Button logNow;
+    private Button logNow;
     private TextArea login;
     private TextArea password;
-
+    private Integer ClientNumber;
+    @Autowired
+    private ClientsPresenter clientsPresenter;
     public ClientsAccount() {
         setMargin(true);
         setSpacing(true);
@@ -30,6 +31,8 @@ public class ClientsAccount extends VerticalLayout implements View {
 
     private void initView() {
         out = new Button("Cofnij");
+        newUser=new Button("Nowy użytkownik");
+        logNow=new Button("Zaloguj");
         out.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
@@ -42,12 +45,21 @@ public class ClientsAccount extends VerticalLayout implements View {
                 getUI().getNavigator().navigateTo(ViewNames.NEW_ACCOUNT);
             }
         });
-        login = new TextArea("");
-        password = new TextArea("");
+        logNow.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent event) {
+               ClientNumber =clientsPresenter.search(login.getValue(),password.getValue());
+                if(ClientNumber==-1)login.setValue("Popełniłeś błąd podczas logowania");
+                else getUI().getNavigator().navigateTo(ViewNames.INDIVIDUAL_ACCOUNT);
+                }
+
+        });
+        login = new TextArea("Wpisz swój login");
+        password = new TextArea("Wpisz swoje hasło");
         addComponent(out);
         addComponent(login);
         addComponent(password);
-
+        addComponent(logNow);
         addComponent(newUser);
     }
 

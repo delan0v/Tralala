@@ -10,4 +10,5 @@ public interface ViewNames {
     String OFERTY_VIEW = "offerts";
     String ACCOUNT="account";
     String NEW_ACCOUNT="new account";
+    String INDIVIDUAL_ACCOUNT="individual ccount";
 }

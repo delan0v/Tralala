@@ -2,6 +2,8 @@ package com.example.vaadin.client;
 
 import java.util.List;
 
+import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.ui.Notification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,4 +26,20 @@ public class ClientsPresenter {
         List<Clients> clients = clientsService.getAllClients();
         return new BeanItemContainer<Clients>(Clients.class, clients);
     }
+    public void addNewClient(Clients client){
+        try{
+            clientsService.addClient(client);
+            Notification.show("Konto zostało założone");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            Notification.show("Wyjebało wszystko", Notification.Type.ERROR_MESSAGE);
+        }
+
+
+    }
+    public void removeClient(Clients client){
+        clientsService.removeClient(client);
+    }
+    public int search(String surname,String password){return clientsService.searchClient(surname,password);}
 }

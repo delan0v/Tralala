@@ -15,6 +15,7 @@ public class FirstViev extends VerticalLayout implements View {
     private Button calculator;
     private Button offers;
     private Button clientFromDB;
+    private Button clientAcc;
     private Label firstMenu;
 
     public FirstViev() {
@@ -26,7 +27,14 @@ public class FirstViev extends VerticalLayout implements View {
     private void initView() {
         firstMenu = new Label();
         calculator = new Button("Kalkulator kredytowy");
-        clientFromDB = new Button("Pokaż wiersze z bazy danych <3 ");
+        clientFromDB = new Button("Baza danych");
+        clientAcc = new Button("Twoje konto");
+        clientAcc.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent event) {
+                getUI().getNavigator().navigateTo(ViewNames.ACCOUNT);
+            }
+        });
         clientFromDB.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
@@ -49,8 +57,9 @@ public class FirstViev extends VerticalLayout implements View {
         firstMenu.setValue("Witaj na stronie naszego banku\nWybierz usługę:");
 
         addComponent(firstMenu);
-        addComponent(calculator);
+        addComponent(clientAcc);
         addComponent(offers);
+        addComponent(calculator);
         addComponent(clientFromDB);
     }
 
