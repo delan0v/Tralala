@@ -43,9 +43,9 @@ public class ClientsServiceImpl implements ClientsService {
         return clientsRepository.findAll();
     }
     @Override
-    public Integer searchClient(String surname, String password) {
+    public Integer searchClient(String login, String password) {
         for (int i = 1; i < getAllClients().size(); i++) {
-            if ((clientsRepository.findOne(i).getSurname().equals(surname)) &&
+            if ((clientsRepository.findOne(i).getLogin().equals(login)) &&
                     (clientsRepository.findOne(i).getPassword().equals(password)))
                     {
                 return i;}

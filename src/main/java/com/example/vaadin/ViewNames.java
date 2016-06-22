@@ -11,4 +11,5 @@ public interface ViewNames {
     String ACCOUNT="account";
     String NEW_ACCOUNT="new account";
     String INDIVIDUAL_ACCOUNT="individual ccount";
+    String CELCIUSTOFAHRENHEIT_VIEV="celcius fahrenheit calculator";
 }

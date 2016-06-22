@@ -1,5 +1,6 @@
 package com.example.vaadin.firstViev;
 
+import com.example.vaadin.calculejter.CelFahrCalcuator;
 import com.vaadin.ui.*;
 import org.springframework.context.annotation.Scope;
 
@@ -17,6 +18,7 @@ public class FirstViev extends VerticalLayout implements View {
     private Button clientFromDB;
     private Button clientAcc;
     private Label firstMenu;
+    private Button celciusFahrenheit;
 
     public FirstViev() {
         setMargin(true);
@@ -54,6 +56,13 @@ public class FirstViev extends VerticalLayout implements View {
                 getUI().getNavigator().navigateTo(ViewNames.OFERTY_VIEW);
             }
         });
+        celciusFahrenheit = new Button("Celcius-Fahrenheit");
+        celciusFahrenheit.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent event) {
+                getUI().getNavigator().navigateTo(ViewNames.CELCIUSTOFAHRENHEIT_VIEV);
+        }
+        });
         firstMenu.setValue("Witaj na stronie naszego banku\nWybierz usługę:");
 
         addComponent(firstMenu);
@@ -61,6 +70,7 @@ public class FirstViev extends VerticalLayout implements View {
         addComponent(offers);
         addComponent(calculator);
         addComponent(clientFromDB);
+        addComponent(celciusFahrenheit);
     }
 
     @Override

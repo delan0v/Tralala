@@ -41,5 +41,5 @@ public class ClientsPresenter {
     public void removeClient(Clients client){
         clientsService.removeClient(client);
     }
-    public int search(String surname,String password){return clientsService.searchClient(surname,password);}
+    public int search(String login,String password){return clientsService.searchClient(login,password);}
 }

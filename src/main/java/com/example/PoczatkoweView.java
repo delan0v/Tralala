@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.vaadin.calculejter.CelFahrCalcuator;
 import com.example.vaadin.client.ClientsAccount;
 import com.example.vaadin.client.IndividualAccount;
 import com.example.vaadin.client.NewClient;
@@ -36,6 +37,8 @@ public class PoczatkoweView extends UI {
     private NewClient newClient;
     @Autowired
     private IndividualAccount individualAccount;
+    @Autowired
+    private CelFahrCalcuator celFahrCalc;
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -49,6 +52,7 @@ public class PoczatkoweView extends UI {
         navigator.addView(ViewNames.ACCOUNT,clientsAccount);
         navigator.addView(ViewNames.NEW_ACCOUNT,newClient);
         navigator.addView(ViewNames.INDIVIDUAL_ACCOUNT, individualAccount);
+        navigator.addView(ViewNames.CELCIUSTOFAHRENHEIT_VIEV, celFahrCalc);
     }
 
 }
