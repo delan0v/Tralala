@@ -14,10 +14,11 @@ import org.springframework.context.annotation.Scope;
 @Scope("prototype")
 public class CelFahrCalcuator extends VerticalLayout implements View {
     Button out;
-    Button oblicz;
-    TextArea celcius;
-    TextArea fahrenheit;
+    Button obliczFahrenheity;
+    Button obliczCelciusze;
+    TextArea number;
     TextField equals;
+    DegreeCalculator calculate;
 
     CelFahrCalcuator(){
         setSpacing(true);
@@ -33,28 +34,27 @@ public class CelFahrCalcuator extends VerticalLayout implements View {
                 getUI().getNavigator().navigateTo(ViewNames.MAINVIEW_VIEW);
             }
         });
-        celcius=new TextArea("Podaj stopnie Celciusa");
-        fahrenheit=new TextArea("Podaj stopnie Fahrenheita");
+        number=new TextArea("Podaj wartość");
         equals=new TextField("");
-        oblicz.addClickListener(new Button.ClickListener() {
+        obliczFahrenheity=new Button("Z Celciuszy na Fahrenheity");
+        obliczCelciusze=new Button ("Z Fahrenheitów na Celciusze");
+        obliczFahrenheity.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
-                if ((celcius.getValue().equals(""))&&((fahrenheit.getValue().equals("")))) equals.setValue("Ustaw wartości!");
-                else if (celcius.getValue().equals("")) {
-                    equals.setValue(String.valueOf(5/9*(Double.parseDouble(fahrenheit.getValue())-32)));
-                    celcius.setValue("");
-                    fahrenheit.setValue("");
+                calculate=new DegreeCalculator();
+                equals.setValue(calculate.CelciusToFahrenheit(number.getValue()));
                 }
-                else if (celcius.getValue().equals("")){
-                    equals.setValue(String.valueOf(9/5*(Double.parseDouble(fahrenheit.getValue())+32)));
-                    celcius.setValue("");
-                    fahrenheit.setValue("");
-                }
+            }
+        );
+        obliczCelciusze.addClickListener(new Button.ClickListener()  {
+            public void buttonClick(Button.ClickEvent event) {
+                calculate=new DegreeCalculator();
+                equals.setValue(calculate.FafrenheitToCelcius(number.getValue()));
             }
         });
         addComponent(out);
-        addComponent(celcius);
-        addComponent(fahrenheit);
-        addComponent(oblicz);
+        addComponent(number);
+        addComponent(obliczCelciusze);
+        addComponent(obliczFahrenheity);
         addComponent(equals);
     }
 
