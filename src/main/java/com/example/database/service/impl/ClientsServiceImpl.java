@@ -1,14 +1,12 @@
 package com.example.database.service.impl;
 
-import java.util.List;
-
-import com.sun.deploy.util.SessionState;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.example.database.model.Clients;
 import com.example.database.repository.ClientsRepository;
 import com.example.database.service.ClientsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class ClientsServiceImpl implements ClientsService {
@@ -17,31 +15,38 @@ public class ClientsServiceImpl implements ClientsService {
     private ClientsRepository clientsRepository;
 
     @Override
-    public void addClient(Clients client) {
-        clientsRepository.save(client);
+    public void addClient(Clients clients) {
+        clientsRepository.save(clients);
     }
 
     @Override
-    public void updateClient(Clients client) {
-        Clients newClient = clientsRepository.getOne(client.getId());
-        newClient.setName(client.getName());
-        newClient.setSurname(client.getSurname());
-        newClient.setNumber(client.getNumber());
-        newClient.setLogin(client.getLogin());
-        newClient.setPassword(client.getPassword());
-        newClient.setBallance(client.getBallance());
-        clientsRepository.save(newClient);
+    public void updateClient(Clients clients) {
+        Clients newClients = clientsRepository.getOne(clients.getId());
+        newClients.setName(clients.getName());
+        newClients.setSurname(clients.getSurname());
+        newClients.setNumber(clients.getNumber());
+        newClients.setLogin(clients.getLogin());
+        newClients.setPassword(clients.getPassword());
+        newClients.setBallance(clients.getBallance());
+        clientsRepository.save(newClients);
     }
 
     @Override
-    public void removeClient(Clients client) {
-        clientsRepository.delete(client);
+    public void removeClient(Clients clients) {
+        clientsRepository.delete(clients);
     }
 
     @Override
     public List<Clients> getAllClients() {
         return clientsRepository.findAll();
     }
+
+    // TODO zła implementacja ;) Wykorzystaj QueryMethdos - wpisz w google : QueryMethods Spring JPA examples
+    // poza tym zobacz co tu robisz : 1. szukasz wszystkich clientów : no spoko - masz ich :) Fajnie :)
+    // 2. iterujesz po każdym kliencie i dla każdego klienta szukasz kolejnego klienta : czyli jak masz clienta np.
+    // z id 1 to znów go szukasz w bazie :) bez sensu.... :D a jak go znajdziesz to znów szukasz dla klienta którego masz
+    // w bazie danych tego samego klienta... i sprawdzasz mu hasło...
+    // TODO złe formatowanie klamerka : { powinna być na końcu linijki zawsze ! <3
     @Override
     public Integer searchClient(String login, String password) {
         for (int i = 1; i < getAllClients().size(); i++) {

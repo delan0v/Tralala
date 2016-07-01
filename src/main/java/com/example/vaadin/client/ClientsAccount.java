@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Scope;
  */
 @SpringView(name = ViewNames.ACCOUNT)
 @Scope("prototype")
-
 public class ClientsAccount extends VerticalLayout implements View {
     private Button out;
     private Button newUser;
@@ -48,6 +47,7 @@ public class ClientsAccount extends VerticalLayout implements View {
         logNow.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
+                // TODO to co tu jest powinno być metodą w prezenterze ! ! !
                ClientNumber =clientsPresenter.search(login.getValue(),password.getValue());
                 if(ClientNumber==-1)login.setValue("Popełniłeś błąd podczas logowania");
                 else getUI().getNavigator().navigateTo(ViewNames.INDIVIDUAL_ACCOUNT);

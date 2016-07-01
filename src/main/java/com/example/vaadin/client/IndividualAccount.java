@@ -23,6 +23,9 @@ public class IndividualAccount  extends VerticalLayout implements View{
         setSpacing(true);
         initView();
     }
+
+    //TODO : musisz tutaj dorobić wyświetlanie informacji z bazy danych : Tabelkę możesz przenieść z ClientsView :)
+    // ale musi być widoczne tylko dane jednego zalogowanego użykownika
     public void initView(){
         mainText=new TextField();
     }

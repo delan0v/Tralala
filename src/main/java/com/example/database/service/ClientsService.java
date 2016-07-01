@@ -1,19 +1,19 @@
 package com.example.database.service;
 
-import java.util.List;
-
 import com.example.database.model.Clients;
+
+import java.util.List;
 
 /**
  * Created by pkaczmar on 2016-05-27.
  */
 public interface ClientsService {
 
-    void addClient(Clients client);
+    void addClient(Clients clients);
 
-    void updateClient(Clients client);
+    void updateClient(Clients clients);
 
-    void removeClient(Clients client);
+    void removeClient(Clients clients);
 
     public Integer searchClient(String login, String password);
 

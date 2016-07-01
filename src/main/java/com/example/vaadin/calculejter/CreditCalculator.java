@@ -15,6 +15,7 @@ import com.vaadin.ui.*;
 @Scope("prototype")
 public class CreditCalculator extends VerticalLayout implements View {
 
+    // TODO dostęp private :)
     Button out;
     TextArea textCash;
     TextArea textPercent;
@@ -44,6 +45,7 @@ public class CreditCalculator extends VerticalLayout implements View {
         calculate.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event2) {
+                //TODO parsowanie na double tak jak w kalkulatorze stopni celsjusza - do metody :) Tu się robi bałagan :)
                 double money = calculateCredit(Double.parseDouble(textCash.getValue()), Integer.parseInt(textTime.getValue()), Double.parseDouble(textPercent.getValue()));
                 if (money!=-1)
                     textEquals.setValue(Double.toString(money));
@@ -59,17 +61,23 @@ public class CreditCalculator extends VerticalLayout implements View {
         addComponent(textEquals);
     }
 
+    //TODO stworzyć klasę prezentera i tam wkleić tę metodę :)
     public double calculateCredit(double cash, int month, double percent) {
 
+        // TODO po każdym znaku spacja      if( (cash <= 0) || ... itd.
         if((cash<=0)||(0>month)||(13<month)||(percent<0)){
+            // TODO - może lepiej rzucić wyjątkiem np. BadValuesException który stworzysz a w messege wpiszesz powód :)
             return -1;
         }
+        // TODO może tak chciałeś ale co z miesiącem 0 ? jest jakiś specjalny ? :D
+        // TODO ten else nie jest potrzebny - jak wejdzie w pierwszego if'a to masz return i wyjdzie z metody :)
         else if (month > 1) {
             cash += cash * percent / 100;
             month--;
             return calculateCredit(cash, month, percent);
         }
 
+        // TODO niepotrzebny else    jak wyżej
         else return cash + cash * percent / 100;
 
     }

@@ -3,7 +3,6 @@ package com.example.vaadin.client;
 
 import com.example.database.model.Clients;
 import com.example.vaadin.ViewNames;
-import com.vaadin.data.validator.IntegerRangeValidator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
@@ -70,13 +69,15 @@ public class NewClient extends HorizontalLayout implements View, Button.ClickLis
             getUI().getNavigator().navigateTo(ViewNames.ACCOUNT);
         } else if (event.getButton() == newUser) {
             try {
-                Clients client = new Clients();
-                client.setName(name.getValue());
-                client.setSurname(surname.getValue());
-                client.setNumber(Integer.parseInt(number.getValue()));
-                client.setLogin(login.getValue());
-                client.setPassword(password.getValue());
-                clientsPresenter.addNewClient(client);
+                // TODO - może konstruktor ? - a najlepiej przenieśc te parametry metodą do metody w prezenterze?
+                // TODO - może konstruktor ? - a najlepiej przenieśc te parametry metodą do metody w prezenterze?
+                Clients clients = new Clients();
+                clients.setName(name.getValue());
+                clients.setSurname(surname.getValue());
+                clients.setNumber(Integer.parseInt(number.getValue()));
+                clients.setLogin(login.getValue());
+                clients.setPassword(password.getValue());
+                clientsPresenter.addNewClient(clients);
 
             } catch(Exception e){
                 e.printStackTrace();
