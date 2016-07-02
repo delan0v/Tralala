@@ -2,9 +2,8 @@ package com.example;
 
 import com.example.vaadin.calculejter.CelFahrCalcuator;
 import com.example.vaadin.client.ClientsAccount;
-import com.example.vaadin.client.IndividualAccount;
+import com.example.vaadin.indyvidual.IndividualAccount;
 import com.example.vaadin.client.NewClient;
-import com.vaadin.navigator.View;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.vaadin.ViewNames;

@@ -17,7 +17,7 @@ public class DatabaseFiledIteratorTest {
 		Field[] fields = databaseFiledIterator.dajListePol("com.example.database.model.Clients");
 		Assert.assertNotNull(fields);
 
-		Field[] fields2 = databaseFiledIterator.dajListePol("com.example.vaadin.client.IndividualAccount");
+		Field[] fields2 = databaseFiledIterator.dajListePol("com.example.vaadin.indyvidual.IndividualAccount");
 		Assert.assertNotNull(fields2);
 	}
 

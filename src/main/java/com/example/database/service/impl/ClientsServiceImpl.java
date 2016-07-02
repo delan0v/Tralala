@@ -48,15 +48,8 @@ public class ClientsServiceImpl implements ClientsService {
     // w bazie danych tego samego klienta... i sprawdzasz mu hasło...
     // TODO złe formatowanie klamerka : { powinna być na końcu linijki zawsze ! <3
     @Override
-    public Integer searchClient(String login, String password) {
-        for (int i = 1; i < getAllClients().size(); i++) {
-            if ((clientsRepository.findOne(i).getLogin().equals(login)) &&
-                    (clientsRepository.findOne(i).getPassword().equals(password)))
-                    {
-                return i;}
-
-    }
-        return -1;
+    public Clients searchClient(String login, String password) {
+        return clientsRepository.findByLoginAndPassword(login, password);
     }
 
 }

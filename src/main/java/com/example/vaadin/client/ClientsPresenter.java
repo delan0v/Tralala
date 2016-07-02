@@ -38,10 +38,6 @@ public class ClientsPresenter {
 
 
     }
-    // TODO nieużywasz tej metody - albo ją usuń, albo wykorzystaj :)
-    public void removeClient(Clients clients) {
-        clientsService.removeClient(clients);
-    }
-    public int search(String login,String password){
+    public Clients search(String login,String password){
         return clientsService.searchClient(login,password);}
 }

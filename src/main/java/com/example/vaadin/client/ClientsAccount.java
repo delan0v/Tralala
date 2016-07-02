@@ -1,12 +1,18 @@
 package com.example.vaadin.client;
 
+import com.example.util.Session;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+
+import com.example.database.model.Clients;
 import com.example.vaadin.ViewNames;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
-import com.vaadin.ui.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.TextArea;
+import com.vaadin.ui.VerticalLayout;
 
 /**
  * Created by Błażej on 03.06.2016.
@@ -19,9 +25,10 @@ public class ClientsAccount extends VerticalLayout implements View {
     private Button logNow;
     private TextArea login;
     private TextArea password;
-    private Integer ClientNumber;
+
     @Autowired
     private ClientsPresenter clientsPresenter;
+
     public ClientsAccount() {
         setMargin(true);
         setSpacing(true);
@@ -32,6 +39,7 @@ public class ClientsAccount extends VerticalLayout implements View {
         out = new Button("Cofnij");
         newUser=new Button("Nowy użytkownik");
         logNow=new Button("Zaloguj");
+
         out.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
@@ -47,10 +55,13 @@ public class ClientsAccount extends VerticalLayout implements View {
         logNow.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
-                // TODO to co tu jest powinno być metodą w prezenterze ! ! !
-               ClientNumber =clientsPresenter.search(login.getValue(),password.getValue());
-                if(ClientNumber==-1)login.setValue("Popełniłeś błąd podczas logowania");
-                else getUI().getNavigator().navigateTo(ViewNames.INDIVIDUAL_ACCOUNT);
+                Clients clients = clientsPresenter.search(login.getValue(), password.getValue());
+                if (clients == null) {
+                    login.setValue("Popełniłeś błąd podczas logowania");
+                } else {
+                    Session.setLoggedUser(clients.getId(), clients.getName());
+                    getUI().getNavigator().navigateTo(ViewNames.INDIVIDUAL_ACCOUNT);
+                }
                 }
 
         });

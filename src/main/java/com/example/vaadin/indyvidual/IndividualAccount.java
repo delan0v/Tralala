@@ -1,5 +1,6 @@
-package com.example.vaadin.client;
+package com.example.vaadin.indyvidual;
 
+import com.example.util.Session;
 import com.example.vaadin.ViewNames;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -13,11 +14,13 @@ import org.springframework.context.annotation.Scope;
 @SpringView(name = ViewNames.INDIVIDUAL_ACCOUNT)
 @Scope("prototype")
 public class IndividualAccount  extends VerticalLayout implements View{
+
     private TextField mainText;
     private Button withdraw;
     private Button ante;
     private TextArea withdrawMoney;
     private TextArea anteMoney;
+
     public IndividualAccount() {
         setMargin(true);
         setSpacing(true);
@@ -30,6 +33,6 @@ public class IndividualAccount  extends VerticalLayout implements View{
         mainText=new TextField();
     }
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
-        Notification.show("Witaj na swoim koncie bankowym");
+        Notification.show("Witaj" + Session.getLoggedUserName());
     }
 }
