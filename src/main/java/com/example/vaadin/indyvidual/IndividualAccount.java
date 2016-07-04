@@ -34,19 +34,18 @@ public class IndividualAccount extends VerticalLayout implements View{
     public IndividualAccount() {
         setMargin(true);
         setSpacing(true);
-        initView();
         client= new Clients();
     }
     @PostConstruct
     public void loadClient(){
 
-        client=clientsPresenter.searchByIdAndName(Session.getLoggedUserId(),Session.getLoggedUserName());
-        mainText=new TextField("Witaj "+client.getName()+", twoje saldo wynosi: " + client.getBallance());
         out=new Button("Cofnij");
         withdraw=new Button("Wypłać");
         changeMoney=new TextArea("Podaj wartość");
-
         ante=new Button("Wpłać");
+        client=clientsPresenter.searchByIdAndName(Session.getLoggedUserId(),Session.getLoggedUserName());
+        mainText=new TextField("Witaj " + client.getName() + ", twoje saldo wynosi: " + client.getBallance());
+
         out.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
                 getUI().getNavigator().navigateTo(ViewNames.MAINVIEW_VIEW);
@@ -55,7 +54,7 @@ public class IndividualAccount extends VerticalLayout implements View{
         withdraw.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
                 try {
-                    client.setBallance(client.getBallance() - Integer.parseInt(changeMoney.getValue()));
+                    client.setBallance(client.getBallance() - Double.parseDouble(changeMoney.getValue()));
                     mainText.setValue("Witaj "+client.getName()+", twoje saldo wynosi: "+client.getBallance()+"zł");
                 }
                 catch(Exception e){
@@ -66,7 +65,7 @@ public class IndividualAccount extends VerticalLayout implements View{
         ante.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
                 try {
-                    client.setBallance(client.getBallance() + Integer.parseInt(changeMoney.getValue()));
+                    client.setBallance(client.getBallance() + Double.parseDouble(changeMoney.getValue()));
                     mainText.setValue("Witaj "+client.getName()+", twoje saldo wynosi: "+client.getBallance()+"zł");
                 }
                 catch(Exception e){
@@ -81,11 +80,8 @@ public class IndividualAccount extends VerticalLayout implements View{
         addComponent(changeMoney);
 
     }
-    public void initView() {
-        mainText = new TextField();
-    }
 
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
-        Notification.show("Witaj na swoim koncie bankowym");
+        Notification.show("Witaj na swoim koncie bankowym "+client.getName());
     }
 }

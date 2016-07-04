@@ -41,7 +41,7 @@ public class ClientsPresenter {
         clients = new Clients();
         clients.setName(name);
         clients.setSurname(surname);
-        clients.setNumber(Integer.parseInt(number));
+        clients.setNumber(number);
         clients.setLogin(login);
         clients.setPassword(password);
 
