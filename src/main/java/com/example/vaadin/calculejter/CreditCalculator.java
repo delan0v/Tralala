@@ -15,13 +15,13 @@ import com.vaadin.ui.*;
 @Scope("prototype")
 public class CreditCalculator extends VerticalLayout implements View {
 
-    // TODO dostęp private :)
-    Button out;
-    TextArea textCash;
-    TextArea textPercent;
-    TextArea textTime;
-    Button calculate;
-    TextField textEquals;
+    private Button out;
+    private TextArea textCash;
+    private TextArea textPercent;
+    private TextArea textTime;
+    private Button calculate;
+    private TextField textEquals;
+    private CalculatorPresenter calculatorPresenter;
 
     public CreditCalculator() {
         setMargin(true);
@@ -30,6 +30,7 @@ public class CreditCalculator extends VerticalLayout implements View {
     }
 
     private void initView() {
+        calculatorPresenter=new CalculatorPresenter();
         out = new Button("Cofnij");
         out.addClickListener(new Button.ClickListener() {
             @Override
@@ -45,12 +46,15 @@ public class CreditCalculator extends VerticalLayout implements View {
         calculate.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event2) {
-                //TODO parsowanie na double tak jak w kalkulatorze stopni celsjusza - do metody :) Tu się robi bałagan :)
-                double money = calculateCredit(Double.parseDouble(textCash.getValue()), Integer.parseInt(textTime.getValue()), Double.parseDouble(textPercent.getValue()));
-                if (money!=-1)
-                    textEquals.setValue(Double.toString(money));
-                else
+                double money=0;
+                try {
+                    money = calculatorPresenter.calculateCredit(textCash.getValue(), textTime.getValue(), textPercent.getValue());
+                }
+                catch(BadValuesException e){
                     textEquals.setValue("Podałeś złe wartości");
+                }
+                    textEquals.setValue(Double.toString(money));
+
             }
         });
         addComponent(out);
@@ -59,27 +63,6 @@ public class CreditCalculator extends VerticalLayout implements View {
         addComponent(textPercent);
         addComponent(calculate);
         addComponent(textEquals);
-    }
-
-    //TODO stworzyć klasę prezentera i tam wkleić tę metodę :)
-    public double calculateCredit(double cash, int month, double percent) {
-
-        // TODO po każdym znaku spacja      if( (cash <= 0) || ... itd.
-        if((cash<=0)||(0>month)||(13<month)||(percent<0)){
-            // TODO - może lepiej rzucić wyjątkiem np. BadValuesException który stworzysz a w messege wpiszesz powód :)
-            return -1;
-        }
-        // TODO może tak chciałeś ale co z miesiącem 0 ? jest jakiś specjalny ? :D
-        // TODO ten else nie jest potrzebny - jak wejdzie w pierwszego if'a to masz return i wyjdzie z metody :)
-        else if (month > 1) {
-            cash += cash * percent / 100;
-            month--;
-            return calculateCredit(cash, month, percent);
-        }
-
-        // TODO niepotrzebny else    jak wyżej
-        else return cash + cash * percent / 100;
-
     }
 
     @Override

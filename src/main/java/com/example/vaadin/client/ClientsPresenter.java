@@ -34,10 +34,23 @@ public class ClientsPresenter {
             e.printStackTrace();
             Notification.show("Wyjebało wszystko", Notification.Type.ERROR_MESSAGE);
         }
-        // TODO za duże odstępy
-
 
     }
+
+    public void newClient(Clients clients, String name, String surname, String number, String login, String password){
+        clients = new Clients();
+        clients.setName(name);
+        clients.setSurname(surname);
+        clients.setNumber(Integer.parseInt(number));
+        clients.setLogin(login);
+        clients.setPassword(password);
+
+    }
+
     public Clients search(String login,String password){
-        return clientsService.searchClient(login,password);}
+        return clientsService.searchClient(login,password);
+    }
+    public Clients searchByIdAndName(Integer Id,String name){
+        return clientsService.searchThisClient(Id,name);
+    }
 }

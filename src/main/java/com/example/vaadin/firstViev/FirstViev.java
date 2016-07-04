@@ -56,7 +56,7 @@ public class FirstViev extends VerticalLayout implements View {
                 getUI().getNavigator().navigateTo(ViewNames.OFERTY_VIEW);
             }
         });
-        celciusFahrenheit = new Button("Celcius-Fahrenheit");
+        celciusFahrenheit = new Button("Temperatura");
         celciusFahrenheit.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {

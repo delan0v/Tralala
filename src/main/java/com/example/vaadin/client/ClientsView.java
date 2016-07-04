@@ -38,6 +38,6 @@ public class ClientsView extends VerticalLayout implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
-        Notification.show("JESTEś w ClientsView.java");
+        Notification.show("Witaj w bazie danych");
     }
 }

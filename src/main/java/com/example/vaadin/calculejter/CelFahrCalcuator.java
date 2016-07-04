@@ -5,6 +5,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
 /**
@@ -18,6 +19,8 @@ public class CelFahrCalcuator extends VerticalLayout implements View {
     Button obliczCelciusze;
     TextArea number;
     TextField equals;
+
+    @Autowired
     DegreeCalculator calculate;
 
     CelFahrCalcuator(){
@@ -31,6 +34,8 @@ public class CelFahrCalcuator extends VerticalLayout implements View {
         out=new Button("Cofnij");
         out.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
+                number.setValue("");
+                equals.setValue("");
                 getUI().getNavigator().navigateTo(ViewNames.MAINVIEW_VIEW);
             }
         });
@@ -39,19 +44,16 @@ public class CelFahrCalcuator extends VerticalLayout implements View {
         obliczFahrenheity=new Button("Z Celciuszy na Fahrenheity");
         obliczCelciusze=new Button ("Z Fahrenheitów na Celciusze");
         obliczFahrenheity.addClickListener(new Button.ClickListener() {
-                                               public void buttonClick(Button.ClickEvent event) {
-                                                   // TODO Zła optymalizacja :)
-                                                   // Obiekt DegreeCalculator będzie tworzony za każdym razem żeby wywołać metodę.
-                                                   // a on się przecież nie zmienia - wystarczy go stworzyć na początku klasy :)
-                                                   calculate=new DegreeCalculator();
-                                                   equals.setValue(calculate.CelciusToFahrenheit(number.getValue()));
-                                               }
-                                           }
+            public void buttonClick(Button.ClickEvent event) {
+
+                equals.setValue(calculate.celciusToFahrenheit(number.getValue()));
+            }
+        }
         );
         obliczCelciusze.addClickListener(new Button.ClickListener()  {
             public void buttonClick(Button.ClickEvent event) {
                 calculate=new DegreeCalculator();
-                equals.setValue(calculate.FafrenheitToCelcius(number.getValue()));
+                equals.setValue(calculate.fafrenheitToCelcius(number.getValue()));
             }
         });
         addComponent(out);

@@ -28,7 +28,7 @@ public class Clients {
     private String surname;
 
     @Column(name="number")
-    private Integer number;
+    private String number;
 
     @Column(name="login")
     private String login;
@@ -64,9 +64,9 @@ public class Clients {
     public void setBallance(Integer ballance) {
         this.ballance = ballance;
     }
-    public Integer getNumber() {return number;}
+    public String getNumber() {return number;}
 
-    public void setNumber(Integer number) {this.number = number;}
+    public void setNumber(String number) {this.number = number;}
 
     public Integer getId() {
         return id;

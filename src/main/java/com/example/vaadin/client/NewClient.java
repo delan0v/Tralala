@@ -69,14 +69,9 @@ public class NewClient extends HorizontalLayout implements View, Button.ClickLis
             getUI().getNavigator().navigateTo(ViewNames.ACCOUNT);
         } else if (event.getButton() == newUser) {
             try {
-                // TODO - może konstruktor ? - a najlepiej przenieśc te parametry metodą do metody w prezenterze?
-                // TODO - może konstruktor ? - a najlepiej przenieśc te parametry metodą do metody w prezenterze?
-                Clients clients = new Clients();
-                clients.setName(name.getValue());
-                clients.setSurname(surname.getValue());
-                clients.setNumber(Integer.parseInt(number.getValue()));
-                clients.setLogin(login.getValue());
-                clients.setPassword(password.getValue());
+
+                Clients clients=new Clients();
+                clientsPresenter.newClient(clients,name.getValue(),surname.getValue(),number.getValue(),login.getValue(),password.getValue());
                 clientsPresenter.addNewClient(clients);
 
             } catch(Exception e){

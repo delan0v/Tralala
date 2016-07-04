@@ -31,9 +31,7 @@ ALTER TABLE ONLY clients
 ALTER TABLE ONLY clients
   ADD CONSTRAINT clients_pkey PRIMARY KEY (id);
 -- Dodanie przykładowych wartości do bazy, aby coś jużtam było :)
-INSERT INTO clients VALUES (1, 'Jan', 'Nowak','0256125261','JanNiezbędny','jan09',300);
-INSERT INTO clients VALUES (2, 'Jan', 'Kowalski','3654644','hbuyjh','okoi',5000);
-INSERT INTO clients VALUES (3, 'Żaneta', 'Darmodam','0700880007','mike987765','pooiyu',50);
-INSERT INTO clients VALUES (4, 'Agata', 'LoveAndSex','7474653653','trololo','lol',50000);
+INSERT INTO clients VALUES (1, 'Jan', 'Nowak',000000,'JanNiezbedny','jan09',300);
+INSERT INTO clients VALUES (2, 'Jan', 'Kowalski',222333,'Kowal96','kowal',5000);
 --Ustawiam wartość sekwencji, ponieważ sam dodałem 4 wartości i od tej 4 musi teraz dalej dodawać.
 SELECT pg_catalog.setval('id_clients_seq', 4, TRUE);

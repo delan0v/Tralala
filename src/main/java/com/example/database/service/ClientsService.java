@@ -17,6 +17,8 @@ public interface ClientsService {
 
     Clients searchClient(String login, String password);
 
+    Clients searchThisClient(Integer id,String name) ;
+
     List<Clients> getAllClients();
 
 }
