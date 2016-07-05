@@ -42,12 +42,12 @@ public class ClientsPresenter {
     }
 
     public void newClient(Clients clients, String name, String surname, String number, String login, String password){
-        clients = new Clients();
         clients.setName(name);
         clients.setSurname(surname);
         clients.setNumber(number);
         clients.setLogin(login);
         clients.setPassword(password);
+        clients.setBallance((float) 0);
 
     }
 

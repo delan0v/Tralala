@@ -9,6 +9,7 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
+import org.springframework.format.annotation.NumberFormat;
 
 /**
  * Created by pkaczmar on 2016-05-26.
@@ -25,7 +26,8 @@ public class CreditCalculatorView extends VerticalLayout implements View {
     private TextField textEquals;
     @Autowired
     private CalculatorPresenter calculatorPresenter;
-
+    @NumberFormat(pattern = "###.##")
+    Double money;
     public CreditCalculatorView() {
         setMargin(true);
         setSpacing(true);
@@ -48,7 +50,7 @@ public class CreditCalculatorView extends VerticalLayout implements View {
         calculate.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event2) {
-                double money=0;
+                money=0.0;
                 try {
                     money = calculatorPresenter.calculateCredit(textCash.getValue(), textTime.getValue(), textPercent.getValue());
                 }

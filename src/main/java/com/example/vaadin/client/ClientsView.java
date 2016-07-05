@@ -22,22 +22,15 @@ public class ClientsView extends VerticalLayout implements View {
     public ClientsView() {
         setMargin(true);
         setSpacing(true);
-        initView();
     }
 
-    private void initView() {
 
-
-        addComponent(grid);
-    }
-
-    @PostConstruct
-    private void postInit() {
-        grid.setContainerDataSource(clientsPresenter.getClientsContainer());
-    }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
         Notification.show("Witaj w bazie danych");
+        grid.setContainerDataSource(clientsPresenter.getClientsContainer());
+        addComponent(grid);
     }
+
 }

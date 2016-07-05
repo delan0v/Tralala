@@ -7,6 +7,7 @@ import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.format.annotation.NumberFormat;
 
 /**
  * Created by Błażej on 21.06.2016.
@@ -45,7 +46,6 @@ public class CelFahrCalcuator extends VerticalLayout implements View {
         obliczCelciusze=new Button ("Z Fahrenheitów na Celciusze");
         obliczFahrenheity.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
-
                 equals.setValue(calculate.celciusToFahrenheit(number.getValue()));
             }
         }

@@ -9,8 +9,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class CalculatorPresenter {
-    @NumberFormat(pattern="###.##")
-    double number;
 
     public Double calculateCredit(String cashString, String monthString, String percentString) throws BadValuesException {
         Double cash = Double.parseDouble(cashString);
@@ -20,8 +18,8 @@ public class CalculatorPresenter {
             throw new BadValuesException();
         }
         if (month == 1){
-            number=cash + cash * percent / 100;
-            return number;
+            return cash + cash * percent / 100;
+
         }
 
         cash += cash * percent / 100;

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DegreeCalculator{
     @NumberFormat(pattern="###.##")
-    double temperature;
+    Double temperature;
 
     public String celciusToFahrenheit(String celcius) {
         try{

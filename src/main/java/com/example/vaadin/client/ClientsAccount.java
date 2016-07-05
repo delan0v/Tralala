@@ -84,8 +84,8 @@ public class ClientsAccount extends VerticalLayout implements View {
         Notification.show("Zaloguj się na swoje konto bankowe");
         login.setNullSelectionAllowed(false);
         login.setImmediate(true);
-        for(int i=1;;i++){
-            if(clientsPresenter.searchById(i)==null) break;
+        for(int i=1;i<100;i++){
+            if(clientsPresenter.searchById(i)==null);
             else login.addItem(clientsPresenter.searchById(i).getLogin());
         }
     }

@@ -74,9 +74,9 @@ public class IndividualAccountView extends VerticalLayout implements View{
         if(flag==true){
             try {
                 ballance=client.getBallance();
-                if((ballance-Float.parseFloat(changeMoney.getValue())>0)) {
+                if((ballance-Float.parseFloat(changeMoney.getValue())>=0)) {
                     client.setBallance(client.getBallance() - Float.parseFloat(changeMoney.getValue()));
-                    ballanceText.setValue("Saldo wynosi: " + ballance + "zł");
+                    ballanceText.setValue("Saldo: " + ballance + "zł");
                 }
                 else{
                     ballanceText.setValue("Brak środków na koncie!");
@@ -91,7 +91,7 @@ public class IndividualAccountView extends VerticalLayout implements View{
             try {
                 ballance=client.getBallance();
                 client.setBallance(client.getBallance() + Float.parseFloat(changeMoney.getValue()));
-                ballanceText.setValue("Saldo wynosi: "+client.getBallance()+"zł");
+                ballanceText.setValue("Saldo: "+client.getBallance()+"zł");
             } catch(NumberFormatException e){
                 changeMoney.setValue("Podałeś złą wartość!");
             }catch(Exception e){
