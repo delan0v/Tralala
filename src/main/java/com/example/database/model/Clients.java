@@ -37,7 +37,7 @@ public class Clients {
     private String password;
 
     @Column(name="ballance")
-    private Double ballance;
+    private Float ballance;
 
     //NIEZBĘDNE GETTERY i SETTERY oraz EQUALS HASHCODE i TOSTRING
     // Obowiązkowe pola każdego obiektu.
@@ -57,11 +57,11 @@ public class Clients {
         this.password = password;
     }
 
-    public Double getBallance() {
+    public Float getBallance() {
         return ballance;
     }
 
-    public void setBallance(Double ballance) {
+    public void setBallance(Float ballance) {
         this.ballance = ballance;
     }
     public String getNumber() {return number;}

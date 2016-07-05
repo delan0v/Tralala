@@ -41,12 +41,6 @@ public class ClientsServiceImpl implements ClientsService {
         return clientsRepository.findAll();
     }
 
-    // TODO zła implementacja ;) Wykorzystaj QueryMethdos - wpisz w google : QueryMethods Spring JPA examples
-    // poza tym zobacz co tu robisz : 1. szukasz wszystkich clientów : no spoko - masz ich :) Fajnie :)
-    // 2. iterujesz po każdym kliencie i dla każdego klienta szukasz kolejnego klienta : czyli jak masz clienta np.
-    // z id 1 to znów go szukasz w bazie :) bez sensu.... :D a jak go znajdziesz to znów szukasz dla klienta którego masz
-    // w bazie danych tego samego klienta... i sprawdzasz mu hasło...
-
     @Override
     public Clients searchClient(String login, String password) {
         return clientsRepository.findByLoginAndPassword(login, password);
@@ -55,6 +49,9 @@ public class ClientsServiceImpl implements ClientsService {
     public Clients searchThisClient(Integer id,String name)    {
         return clientsRepository.findByIdAndName(id,name);
     }
-
+    @Override
+    public Clients searchById(Integer id){
+        return clientsRepository.findById(id);
+    }
 }
 

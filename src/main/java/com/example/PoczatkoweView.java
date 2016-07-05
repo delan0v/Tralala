@@ -2,12 +2,12 @@ package com.example;
 
 import com.example.vaadin.calculejter.CelFahrCalcuator;
 import com.example.vaadin.client.ClientsAccount;
-import com.example.vaadin.indyvidual.IndividualAccount;
+import com.example.vaadin.indyvidual.IndividualAccountView;
 import com.example.vaadin.client.NewClient;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.vaadin.ViewNames;
-import com.example.vaadin.calculejter.CreditCalculator;
+import com.example.vaadin.calculejter.CreditCalculatorView;
 import com.example.vaadin.client.ClientsView;
 import com.example.vaadin.firstViev.FirstViev;
 import com.example.vaadin.offers.ContoOfferts;
@@ -25,7 +25,7 @@ public class PoczatkoweView extends UI {
     @Autowired
     private FirstViev firstViev;
     @Autowired
-    private CreditCalculator creditCalculator;
+    private CreditCalculatorView creditCalculatorView;
     @Autowired
     private ClientsView clientsView;
     @Autowired
@@ -35,7 +35,7 @@ public class PoczatkoweView extends UI {
     @Autowired
     private NewClient newClient;
     @Autowired
-    private IndividualAccount individualAccount;
+    private IndividualAccountView individualAccountView;
     @Autowired
     private CelFahrCalcuator celFahrCalc;
 
@@ -45,12 +45,12 @@ public class PoczatkoweView extends UI {
 
         navigator = new Navigator(this, this);
         navigator.addView(ViewNames.MAINVIEW_VIEW, firstViev);
-        navigator.addView(ViewNames.KALKULATOR_VIEW, creditCalculator);
+        navigator.addView(ViewNames.KALKULATOR_VIEW, creditCalculatorView);
         navigator.addView(ViewNames.CLIENTS_VIEW, clientsView);
         navigator.addView(ViewNames.OFERTY_VIEW, contoOfferts);
         navigator.addView(ViewNames.ACCOUNT,clientsAccount);
         navigator.addView(ViewNames.NEW_ACCOUNT,newClient);
-        navigator.addView(ViewNames.INDIVIDUAL_ACCOUNT, individualAccount);
+        navigator.addView(ViewNames.INDIVIDUAL_ACCOUNT, individualAccountView);
         navigator.addView(ViewNames.CELCIUSTOFAHRENHEIT_VIEV, celFahrCalc);
     }
 

@@ -21,7 +21,7 @@ public class CelFahrCalcuator extends VerticalLayout implements View {
     TextField equals;
 
     @Autowired
-    DegreeCalculator calculate;
+     DegreeCalculator calculate;
 
     CelFahrCalcuator(){
         setSpacing(true);

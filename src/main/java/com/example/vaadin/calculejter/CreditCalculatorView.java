@@ -1,5 +1,7 @@
 package com.example.vaadin.calculejter;
 
+import com.example.vaadin.calculejter.exception.BadValuesException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
 import com.example.vaadin.ViewNames;
@@ -13,7 +15,7 @@ import com.vaadin.ui.*;
  */
 @SpringView(name = ViewNames.KALKULATOR_VIEW)
 @Scope("prototype")
-public class CreditCalculator extends VerticalLayout implements View {
+public class CreditCalculatorView extends VerticalLayout implements View {
 
     private Button out;
     private TextArea textCash;
@@ -21,16 +23,16 @@ public class CreditCalculator extends VerticalLayout implements View {
     private TextArea textTime;
     private Button calculate;
     private TextField textEquals;
+    @Autowired
     private CalculatorPresenter calculatorPresenter;
 
-    public CreditCalculator() {
+    public CreditCalculatorView() {
         setMargin(true);
         setSpacing(true);
         initView();
     }
 
     private void initView() {
-        calculatorPresenter=new CalculatorPresenter();
         out = new Button("Cofnij");
         out.addClickListener(new Button.ClickListener() {
             @Override
