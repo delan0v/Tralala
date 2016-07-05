@@ -19,7 +19,6 @@ public class CalculatorPresenter {
         }
         if (month == 1){
             return cash + cash * percent / 100;
-
         }
 
         cash += cash * percent / 100;

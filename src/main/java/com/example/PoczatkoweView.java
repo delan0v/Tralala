@@ -3,7 +3,7 @@ package com.example;
 import com.example.vaadin.calculejter.CelFahrCalcuator;
 import com.example.vaadin.client.ClientsAccount;
 import com.example.vaadin.indyvidual.IndividualAccountView;
-import com.example.vaadin.client.NewClient;
+import com.example.vaadin.client.NewClientView;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.vaadin.ViewNames;
@@ -33,7 +33,7 @@ public class PoczatkoweView extends UI {
     @Autowired
     private ClientsAccount clientsAccount;
     @Autowired
-    private NewClient newClient;
+    private NewClientView newClientView;
     @Autowired
     private IndividualAccountView individualAccountView;
     @Autowired
@@ -49,7 +49,7 @@ public class PoczatkoweView extends UI {
         navigator.addView(ViewNames.CLIENTS_VIEW, clientsView);
         navigator.addView(ViewNames.OFERTY_VIEW, contoOfferts);
         navigator.addView(ViewNames.ACCOUNT,clientsAccount);
-        navigator.addView(ViewNames.NEW_ACCOUNT,newClient);
+        navigator.addView(ViewNames.NEW_ACCOUNT, newClientView);
         navigator.addView(ViewNames.INDIVIDUAL_ACCOUNT, individualAccountView);
         navigator.addView(ViewNames.CELCIUSTOFAHRENHEIT_VIEV, celFahrCalc);
     }

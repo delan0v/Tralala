@@ -6,12 +6,10 @@ import com.example.vaadin.ViewNames;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Notification;
-import com.vaadin.ui.TextArea;
+import com.vaadin.ui.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.annotation.PostConstruct;
 
@@ -20,19 +18,21 @@ import javax.annotation.PostConstruct;
  */
 @SpringView(name = ViewNames.NEW_ACCOUNT)
 @Scope("prototype")
-public class NewClient extends HorizontalLayout implements View, Button.ClickListener {
+public class NewClientView extends HorizontalLayout implements View, Button.ClickListener {
+
     private Button out;
     private Button newUser;
     private TextArea login;
-    private TextArea password;
+    private PasswordField password;
     private TextArea name;
     private TextArea surname;
     private TextArea number;
 
     @Autowired
+    @NumberFormat
     private ClientsPresenter clientsPresenter;
 
-    public NewClient() {
+    public NewClientView() {
         setMargin(true);
         setSpacing(true);
     }
@@ -44,7 +44,7 @@ public class NewClient extends HorizontalLayout implements View, Button.ClickLis
         newUser = new Button("Załóż konto");
         newUser.addClickListener(this);
         login = new TextArea("Podaj nowy login");
-        password = new TextArea("Podaj swoje hasło");
+        password = new PasswordField("Podaj swoje hasło");
         name = new TextArea("Podaj imię");
         surname = new TextArea("Podaj nazwisko");
         number = new TextArea("Podaj numer telefonu");

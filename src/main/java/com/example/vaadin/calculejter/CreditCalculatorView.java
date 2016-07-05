@@ -1,15 +1,15 @@
 package com.example.vaadin.calculejter;
 
-import com.example.vaadin.calculejter.exception.BadValuesException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.format.annotation.NumberFormat;
 
 import com.example.vaadin.ViewNames;
+import com.example.vaadin.calculejter.exception.BadValuesException;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
-import org.springframework.format.annotation.NumberFormat;
 
 /**
  * Created by pkaczmar on 2016-05-26.
@@ -26,6 +26,7 @@ public class CreditCalculatorView extends VerticalLayout implements View {
     private TextField textEquals;
     @Autowired
     private CalculatorPresenter calculatorPresenter;
+    // TODO prywatne :)
     @NumberFormat(pattern = "###.##")
     Double money;
     public CreditCalculatorView() {
@@ -50,15 +51,13 @@ public class CreditCalculatorView extends VerticalLayout implements View {
         calculate.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event2) {
-                money=0.0;
+                money = 0.0;
                 try {
                     money = calculatorPresenter.calculateCredit(textCash.getValue(), textTime.getValue(), textPercent.getValue());
-                }
-                catch(BadValuesException e){
+                } catch (BadValuesException e) {
                     textEquals.setValue("Podałeś złe wartości");
                 }
-                    textEquals.setValue(Double.toString(money));
-
+                textEquals.setValue(Double.toString(money));
             }
         });
         addComponent(out);

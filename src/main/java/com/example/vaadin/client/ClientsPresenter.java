@@ -24,7 +24,7 @@ public class ClientsPresenter {
         List<Clients> clientses = clientsService.getAllClients();
         return new BeanItemContainer<Clients>(Clients.class, clientses);
     }
-    public List<Clients> getClientsList(){
+    public List<Clients> getAllClients(){
         List<Clients> clients = clientsService.getAllClients();
         return clients;
     }

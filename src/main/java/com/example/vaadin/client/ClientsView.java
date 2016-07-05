@@ -24,8 +24,6 @@ public class ClientsView extends VerticalLayout implements View {
         setSpacing(true);
     }
 
-
-
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
         Notification.show("Witaj w bazie danych");

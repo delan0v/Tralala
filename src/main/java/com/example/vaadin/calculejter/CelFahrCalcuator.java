@@ -7,7 +7,6 @@ import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.format.annotation.NumberFormat;
 
 /**
  * Created by Błażej on 21.06.2016.
@@ -15,6 +14,7 @@ import org.springframework.format.annotation.NumberFormat;
 @SpringView(name = ViewNames.CELCIUSTOFAHRENHEIT_VIEV)
 @Scope("prototype")
 public class CelFahrCalcuator extends VerticalLayout implements View {
+    //TODO pola powinny być prywatne
     Button out;
     Button obliczFahrenheity;
     Button obliczCelciusze;
@@ -22,13 +22,12 @@ public class CelFahrCalcuator extends VerticalLayout implements View {
     TextField equals;
 
     @Autowired
-     DegreeCalculator calculate;
+    DegreeCalculator calculate;
 
     CelFahrCalcuator(){
         setSpacing(true);
         setMargin(true);
         initCalculator();
-
     }
 
     private void initCalculator(){
@@ -52,6 +51,8 @@ public class CelFahrCalcuator extends VerticalLayout implements View {
         );
         obliczCelciusze.addClickListener(new Button.ClickListener()  {
             public void buttonClick(Button.ClickEvent event) {
+                // TODO Albo robisz @Autowired albo "new DegreeCalculator();"
+                // Albo jedno, albo drugie - mówiłem :) - sugeruję zostawić @Autowired
                 calculate=new DegreeCalculator();
                 equals.setValue(calculate.fafrenheitToCelcius(number.getValue()));
             }
@@ -62,8 +63,6 @@ public class CelFahrCalcuator extends VerticalLayout implements View {
         addComponent(obliczFahrenheity);
         addComponent(equals);
     }
-
-
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
