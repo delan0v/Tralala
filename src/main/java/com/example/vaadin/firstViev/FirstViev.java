@@ -1,13 +1,13 @@
 package com.example.vaadin.firstViev;
 
-import com.example.vaadin.calculejter.CelFahrCalcuator;
 import com.vaadin.ui.*;
 import org.springframework.context.annotation.Scope;
-
 import com.example.vaadin.ViewNames;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
+import javax.annotation.PostConstruct;
+
 
 @SpringView(name = ViewNames.MAINVIEW_VIEW)
 @Scope("prototype")
@@ -17,53 +17,72 @@ public class FirstViev extends VerticalLayout implements View {
     private Button offers;
     private Button clientFromDB;
     private Button clientAcc;
-    private Label firstMenu;
     private Button celciusFahrenheit;
+    private TextField firstMenu;
 
     public FirstViev() {
         setMargin(true);
         setSpacing(true);
-        initView();
     }
 
+    @PostConstruct
     private void initView() {
-        firstMenu = new Label();
-        calculator = new Button("Kalkulator kredytowy");
-        clientFromDB = new Button("Baza danych");
+
+        firstMenu = new TextField();
+        firstMenu.setValue("Wybierz usługę:");
+        firstMenu.setWidth("140");
+        firstMenu.setHeight("30");
+        firstMenu.addStyleName("MyStyle");// gówno się zmienia styl
+
         clientAcc = new Button("Twoje konto");
+        clientAcc.setWidth("200");
+        clientAcc.setHeight("30");
         clientAcc.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
                 getUI().getNavigator().navigateTo(ViewNames.ACCOUNT);
             }
         });
+
+        clientFromDB = new Button("Baza danych");
+        clientFromDB.setWidth("200");
+        clientFromDB.setHeight("30");
         clientFromDB.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
                 getUI().getNavigator().navigateTo(ViewNames.CLIENTS_VIEW);
             }
         });
+
+        calculator = new Button("Kalkulator kredytowy");
+        calculator.setWidth("200");
+        calculator.setHeight("30");
         calculator.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
                 getUI().getNavigator().navigateTo(ViewNames.KALKULATOR_VIEW);
             }
         });
+
         offers = new Button("Oferty dla klienta");
+        offers.setWidth("200");
+        offers.setHeight("30");
         offers.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
                 getUI().getNavigator().navigateTo(ViewNames.OFERTY_VIEW);
             }
         });
+
         celciusFahrenheit = new Button("Temperatura");
+        celciusFahrenheit.setWidth("200");
+        celciusFahrenheit.setHeight("30");
         celciusFahrenheit.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
                 getUI().getNavigator().navigateTo(ViewNames.CELCIUSTOFAHRENHEIT_VIEV);
         }
         });
-        firstMenu.setValue("Witaj na stronie naszego banku\nWybierz usługę:");
 
         addComponent(firstMenu);
         addComponent(clientAcc);
@@ -71,6 +90,13 @@ public class FirstViev extends VerticalLayout implements View {
         addComponent(calculator);
         addComponent(clientFromDB);
         addComponent(celciusFahrenheit);
+
+        setComponentAlignment(firstMenu, Alignment.MIDDLE_CENTER);
+        setComponentAlignment(clientAcc, Alignment.MIDDLE_CENTER);
+        setComponentAlignment(offers, Alignment.MIDDLE_CENTER);
+        setComponentAlignment(calculator, Alignment.MIDDLE_CENTER);
+        setComponentAlignment(clientFromDB, Alignment.MIDDLE_CENTER);
+        setComponentAlignment(celciusFahrenheit, Alignment.MIDDLE_CENTER);
     }
 
     @Override

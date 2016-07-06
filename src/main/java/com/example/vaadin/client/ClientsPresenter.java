@@ -57,7 +57,4 @@ public class ClientsPresenter {
     public Clients searchByIdAndName(Integer Id,String name){
         return clientsService.searchThisClient(Id,name);
     }
-    public Clients searchById(Integer id){
-        return clientsService.searchById(id);
-    }
 }

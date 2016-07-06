@@ -8,7 +8,4 @@ public interface ClientsRepository extends JpaRepository<Clients, Integer> {
 	 Clients findByLoginAndPassword(String login, String password);
 	 Clients findByIdAndName(Integer id,String name);
 
-	// TODO Usunąć tę metodę - jest duplikatem -> jak wejdziesz z lewym ctrl na JpaRepository to zobaczysz, że tam masz metodę findOne(ID id) :P Jej trzeba użyc
-	 Clients findById(Integer id);
-
 }

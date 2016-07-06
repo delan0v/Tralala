@@ -20,58 +20,98 @@ import javax.annotation.PostConstruct;
  */
 @SpringView(name = ViewNames.INDIVIDUAL_ACCOUNT)
 @Scope("prototype")
-public class IndividualAccountView extends VerticalLayout implements View{
+public class IndividualAccountView extends HorizontalLayout implements View{
     @Autowired
     private ClientsPresenter clientsPresenter;
+
     private Button out;
-    private TextField ballanceText;
-    private TextField nameText;
     private Button withdraw;
     private Button ante;
-    private TextArea changeMoney;
+    private TextField ballanceText;
+    private TextField nameText;
+    private TextField changeMoney;
     private Clients client;
+    private VerticalLayout verticalLayout;
+    private HorizontalLayout horizontalLayout;
+
     @NumberFormat(pattern = "###.##")
     private Float ballance;
 
     public IndividualAccountView() {
         setMargin(true);
         setSpacing(true);
-        client= new Clients();
+        setSizeFull();
     }
     @PostConstruct
     public void loadClient(){
 
-        out=new Button("Cofnij");
-        withdraw=new Button("Wypłać");
-        changeMoney=new TextArea("Podaj wartość");
-        ante=new Button("Wpłać");
-        ballanceText=new TextField("");
-        nameText=new TextField("");
+        client = new Clients();
+        verticalLayout = new VerticalLayout();
+        horizontalLayout = new HorizontalLayout();
+
+        out = new Button("Cofnij");
+        out.setWidth("125");
+        out.setHeight("30");
         out.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
                 getUI().getNavigator().navigateTo(ViewNames.MAINVIEW_VIEW);
             }
         });
+
+        nameText = new TextField();
+        nameText.setWidth("200");
+        nameText.setHeight("30");
+
+        ballanceText = new TextField();
+        ballanceText.setWidth("200");
+        ballanceText.setHeight("30");
+
+        changeMoney = new TextField("Ile chcesz wpłacić/wypłacić?");
+        changeMoney.setWidth("200");
+        changeMoney.setHeight("30");
+
+        withdraw = new Button("Wypłać");
+        withdraw.setWidth("100");
+        withdraw.setHeight("30");
         withdraw.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
                 calculateBallance(true);
-                }
+            }
         });
+
+        ante = new Button("Wpłać");
+        ante.setWidth("100");
+        ante.setHeight("30");
         ante.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
                 calculateBallance(false);
             }
         });
-        addComponent(out);
-        addComponent(nameText);
-        addComponent(ballanceText);
-        addComponent(ante);
-        addComponent(withdraw);
-        addComponent(changeMoney);
 
+        addComponent(out);
+        addComponent(verticalLayout);
+
+        verticalLayout.addComponent(nameText);
+        verticalLayout.addComponent(ballanceText);
+        verticalLayout.addComponent(changeMoney);
+        verticalLayout.addComponent(horizontalLayout);
+
+        horizontalLayout.addComponent(ante);
+        horizontalLayout.addComponent(withdraw);
+
+        setComponentAlignment(out,Alignment.TOP_LEFT);
+        setComponentAlignment(verticalLayout,Alignment.MIDDLE_CENTER);
+
+        verticalLayout.setComponentAlignment(nameText,Alignment.MIDDLE_CENTER);
+        verticalLayout.setComponentAlignment(ballanceText,Alignment.MIDDLE_CENTER);
+        verticalLayout.setComponentAlignment(changeMoney,Alignment.MIDDLE_CENTER);
+        verticalLayout.setComponentAlignment(horizontalLayout,Alignment.MIDDLE_CENTER);
+
+        horizontalLayout.setComponentAlignment(ante,Alignment.MIDDLE_CENTER);
+        horizontalLayout.setComponentAlignment(withdraw,Alignment.MIDDLE_CENTER);
     }
     private void calculateBallance(boolean flag){
-        if(flag==true){
+        if(flag == true){
             try {
                 ballance=client.getBallance();
                 if((ballance-Float.parseFloat(changeMoney.getValue())>=0)) {
@@ -102,9 +142,8 @@ public class IndividualAccountView extends VerticalLayout implements View{
     }
 
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
-        Notification.show("Witaj na swoim koncie bankowym "+client.getName());
         client=clientsPresenter.searchByIdAndName(SessionUtil.getLoggedUserId(),SessionUtil.getLoggedUserName());
         ballanceText.setValue("Saldo: " + client.getBallance());
-        nameText.setValue("Witaj "+client.getName());
+        nameText.setValue("Witaj "+client.getName()+" "+client.getSurname()+"!");
     }
 }

@@ -19,10 +19,5 @@ public interface ClientsService {
 
     Clients searchThisClient(Integer id,String name) ;
 
-    Clients searchById(Integer id);
-
     List<Clients> getAllClients();
-
-
-
 }

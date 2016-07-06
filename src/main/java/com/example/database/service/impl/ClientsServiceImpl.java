@@ -49,9 +49,5 @@ public class ClientsServiceImpl implements ClientsService {
     public Clients searchThisClient(Integer id,String name)    {
         return clientsRepository.findByIdAndName(id,name);
     }
-    @Override
-    public Clients searchById(Integer id){
-        return clientsRepository.findById(id);
-    }
 }
 

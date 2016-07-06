@@ -18,12 +18,14 @@ import java.util.List;
  */
 @SpringView(name = ViewNames.ACCOUNT)
 @Scope("prototype")
-public class ClientsAccount extends VerticalLayout implements View {
+public class ClientsAccount extends HorizontalLayout implements View {
+
     private Button out;
     private Button newUser;
     private Button logNow;
     private NativeSelect loginNativeSelect;
-    private TextArea password;
+    private PasswordField password;
+    private VerticalLayout verticalLayout;
 
     @Autowired
     private ClientsPresenter clientsPresenter ;
@@ -31,16 +33,16 @@ public class ClientsAccount extends VerticalLayout implements View {
     public ClientsAccount() {
         setMargin(true);
         setSpacing(true);
-        loginNativeSelect = new NativeSelect("Wybierz użytkownika");
+        setSizeFull();
     }
 
     @PostConstruct
     private void initView() {
-        out = new Button("Cofnij");
-        newUser=new Button("Nowy użytkownik");
-        logNow=new Button("Zaloguj");
-        password = new TextArea("Wpisz swoje hasło");
+        verticalLayout= new VerticalLayout();
 
+        out = new Button("Cofnij");
+        out.setWidth("125");
+        out.setHeight("30");
         out.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
@@ -48,6 +50,10 @@ public class ClientsAccount extends VerticalLayout implements View {
                 getUI().getNavigator().navigateTo(ViewNames.MAINVIEW_VIEW);
             }
         });
+
+        newUser = new Button("Nowy użytkownik");
+        newUser.setWidth("175");
+        newUser.setHeight("30");
         newUser.addClickListener(new Button.ClickListener(){
             @Override
             public void buttonClick(Button.ClickEvent event2){
@@ -55,6 +61,18 @@ public class ClientsAccount extends VerticalLayout implements View {
                 getUI().getNavigator().navigateTo(ViewNames.NEW_ACCOUNT);
             }
         });
+
+        loginNativeSelect = new NativeSelect("Wybierz użytkownika");
+        loginNativeSelect.setWidth("200");
+        loginNativeSelect.setHeight("40");
+
+        password = new PasswordField("Wpisz swoje hasło");
+        password.setWidth("200");
+        password.setHeight("30");
+
+        logNow = new Button("Zaloguj");
+        logNow.setWidth("200");
+        logNow.setHeight("30");
         logNow.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
@@ -69,23 +87,32 @@ public class ClientsAccount extends VerticalLayout implements View {
                 }
             }
         });
+
         addComponent(out);
-        addComponent(loginNativeSelect);
-        addComponent(password);
-        addComponent(logNow);
+        addComponent(verticalLayout);
         addComponent(newUser);
 
+        verticalLayout.addComponent(loginNativeSelect);
+        verticalLayout.addComponent(password);
+        verticalLayout.addComponent(logNow);
+
+        verticalLayout.addComponent(loginNativeSelect);
+        verticalLayout.addComponent(password);
+        verticalLayout.addComponent(logNow);
+
+        setComponentAlignment(out,Alignment.TOP_LEFT);
+        setComponentAlignment(verticalLayout,Alignment.MIDDLE_CENTER);
+        setComponentAlignment(newUser,Alignment.TOP_RIGHT);
+
+        verticalLayout.setComponentAlignment(loginNativeSelect,Alignment.MIDDLE_CENTER);
+        verticalLayout.setComponentAlignment(password,Alignment.MIDDLE_CENTER);
+        verticalLayout.setComponentAlignment(logNow,Alignment.MIDDLE_CENTER);
     }
 
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
         Notification.show("Zaloguj się na swoje konto bankowe");
         loginNativeSelect.setNullSelectionAllowed(false);
         loginNativeSelect.setImmediate(true);
-        // for (int i = 1; i < 100; i++) {
-        // if (clientsPresenter.searchById(i) != null) {
-        // loginNativeSelect.addItem(clientsPresenter.searchById(i).getLogin());
-        // }
-        // }
         List<Clients> clientsList = clientsPresenter.getAllClients();
         loginNativeSelect.addItems(clientsList);
     }

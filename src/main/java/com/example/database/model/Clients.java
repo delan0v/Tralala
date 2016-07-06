@@ -27,16 +27,16 @@ public class Clients {
     @Column(name = "surename")
     private String surname;
 
-    @Column(name="number")
+    @Column(name = "number")
     private String number;
 
-    @Column(name="login")
+    @Column(name = "login")
     private String login;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
-    @Column(name="ballance")
+    @Column(name = "ballance")
     private Float ballance;
 
     //NIEZBĘDNE GETTERY i SETTERY oraz EQUALS HASHCODE i TOSTRING
@@ -132,34 +132,6 @@ public class Clients {
 
     @Override
     public String toString() {
-        return "Clients{" +
-                "id="
-                + id
-                +
-                ", name='"
-                + name
-                + '\''
-                +
-                ", surname='"
-                + surname
-                + '\''
-                +
-                ", number='"
-                +number
-                +'\''
-                +
-                ", login='"
-                +login
-                +'\''
-                +
-                ", password='"
-                +password
-                +'\''
-                +
-                ", ballance='"
-                +ballance
-                +'\''
-                +
-                '}';
+        return getLogin();
     }
 }

@@ -1,6 +1,6 @@
 package com.example;
 
-import com.example.vaadin.calculejter.CelFahrCalcuator;
+import com.example.vaadin.calculejter.CelFahrCalcuatorView;
 import com.example.vaadin.client.ClientsAccount;
 import com.example.vaadin.indyvidual.IndividualAccountView;
 import com.example.vaadin.client.NewClientView;
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.vaadin.ViewNames;
 import com.example.vaadin.calculejter.CreditCalculatorView;
-import com.example.vaadin.client.ClientsView;
+import com.example.vaadin.client.DataBaseClientsView;
 import com.example.vaadin.firstViev.FirstViev;
 import com.example.vaadin.offers.ContoOfferts;
 import com.vaadin.annotations.Theme;
@@ -27,7 +27,7 @@ public class PoczatkoweView extends UI {
     @Autowired
     private CreditCalculatorView creditCalculatorView;
     @Autowired
-    private ClientsView clientsView;
+    private DataBaseClientsView clientsView;
     @Autowired
     private ContoOfferts contoOfferts;
     @Autowired
@@ -37,7 +37,7 @@ public class PoczatkoweView extends UI {
     @Autowired
     private IndividualAccountView individualAccountView;
     @Autowired
-    private CelFahrCalcuator celFahrCalc;
+    private CelFahrCalcuatorView celFahrCalc;
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {

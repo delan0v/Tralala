@@ -9,7 +9,7 @@ public interface ViewNames {
     String MAINVIEW_VIEW = "";
     String OFERTY_VIEW = "offerts";
     String ACCOUNT="account";
-    String NEW_ACCOUNT="new account";
-    String INDIVIDUAL_ACCOUNT="individual ccount";
-    String CELCIUSTOFAHRENHEIT_VIEV="celcius fahrenheit calculator";
+    String NEW_ACCOUNT="new_account";
+    String INDIVIDUAL_ACCOUNT="individual_ccount";
+    String CELCIUSTOFAHRENHEIT_VIEV="celcius_fahrenheit_calculator";
 }
