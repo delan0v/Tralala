@@ -28,6 +28,7 @@ public class ClientsServiceImpl implements ClientsService {
         newClients.setLogin(clients.getLogin());
         newClients.setPassword(clients.getPassword());
         newClients.setBallance(clients.getBallance());
+        newClients.setLastLogin("Pierwsze uruchomienie");
         clientsRepository.save(newClients);
     }
 

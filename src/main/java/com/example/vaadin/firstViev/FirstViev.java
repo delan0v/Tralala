@@ -1,5 +1,6 @@
 package com.example.vaadin.firstViev;
 
+import com.example.util.version.SystemVersion;
 import com.vaadin.ui.*;
 import org.springframework.context.annotation.Scope;
 import com.example.vaadin.ViewNames;
@@ -19,6 +20,7 @@ public class FirstViev extends VerticalLayout implements View {
     private Button clientAcc;
     private Button celciusFahrenheit;
     private TextField firstMenu;
+    private TextField version;
 
     public FirstViev() {
         setMargin(true);
@@ -28,11 +30,16 @@ public class FirstViev extends VerticalLayout implements View {
     @PostConstruct
     private void initView() {
 
+        version = new TextField();
+        version.setValue("Wersja: "+SystemVersion.getSystemVersion());
+        version.setWidth("120");
+        version.setHeight("30");
+
         firstMenu = new TextField();
         firstMenu.setValue("Wybierz usługę:");
         firstMenu.setWidth("140");
         firstMenu.setHeight("30");
-        firstMenu.addStyleName("MyStyle");// gówno się zmienia styl
+        firstMenu.addStyleName("MyStyle");// gówno się zmienia a nie styl styl
 
         clientAcc = new Button("Twoje konto");
         clientAcc.setWidth("200");
@@ -90,6 +97,7 @@ public class FirstViev extends VerticalLayout implements View {
         addComponent(calculator);
         addComponent(clientFromDB);
         addComponent(celciusFahrenheit);
+        addComponent(version);
 
         setComponentAlignment(firstMenu, Alignment.MIDDLE_CENTER);
         setComponentAlignment(clientAcc, Alignment.MIDDLE_CENTER);
@@ -97,6 +105,8 @@ public class FirstViev extends VerticalLayout implements View {
         setComponentAlignment(calculator, Alignment.MIDDLE_CENTER);
         setComponentAlignment(clientFromDB, Alignment.MIDDLE_CENTER);
         setComponentAlignment(celciusFahrenheit, Alignment.MIDDLE_CENTER);
+        setComponentAlignment(celciusFahrenheit,Alignment.MIDDLE_CENTER);
+        setComponentAlignment(version,Alignment.MIDDLE_CENTER);
     }
 
     @Override

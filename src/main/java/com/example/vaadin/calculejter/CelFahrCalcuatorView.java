@@ -7,6 +7,7 @@ import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.annotation.PostConstruct;
 
@@ -16,6 +17,7 @@ import javax.annotation.PostConstruct;
 @SpringView(name = ViewNames.CELCIUSTOFAHRENHEIT_VIEV)
 @Scope("prototype")
 public class CelFahrCalcuatorView extends VerticalLayout implements View {
+
     private Button out;
     private Button obliczFahrenheity;
     private Button obliczCelciusze;

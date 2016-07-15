@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 /**
@@ -30,9 +32,11 @@ public class IndividualAccountView extends HorizontalLayout implements View{
     private TextField ballanceText;
     private TextField nameText;
     private TextField changeMoney;
+    private TextField lastLoginTimeAndDate;
     private Clients client;
     private VerticalLayout verticalLayout;
     private HorizontalLayout horizontalLayout;
+    private LocalDateTime lastLogin;
 
     @NumberFormat(pattern = "###.##")
     private Float ballance;
@@ -62,6 +66,10 @@ public class IndividualAccountView extends HorizontalLayout implements View{
         nameText.setWidth("200");
         nameText.setHeight("30");
 
+        lastLoginTimeAndDate = new TextField();
+        lastLoginTimeAndDate.setWidth("350");
+        lastLoginTimeAndDate.setHeight("30");
+
         ballanceText = new TextField();
         ballanceText.setWidth("200");
         ballanceText.setHeight("30");
@@ -90,6 +98,7 @@ public class IndividualAccountView extends HorizontalLayout implements View{
 
         addComponent(out);
         addComponent(verticalLayout);
+        addComponent(lastLoginTimeAndDate);
 
         verticalLayout.addComponent(nameText);
         verticalLayout.addComponent(ballanceText);
@@ -101,11 +110,13 @@ public class IndividualAccountView extends HorizontalLayout implements View{
 
         setComponentAlignment(out,Alignment.TOP_LEFT);
         setComponentAlignment(verticalLayout,Alignment.MIDDLE_CENTER);
+        setComponentAlignment(lastLoginTimeAndDate,Alignment.BOTTOM_LEFT);
 
         verticalLayout.setComponentAlignment(nameText,Alignment.MIDDLE_CENTER);
         verticalLayout.setComponentAlignment(ballanceText,Alignment.MIDDLE_CENTER);
         verticalLayout.setComponentAlignment(changeMoney,Alignment.MIDDLE_CENTER);
         verticalLayout.setComponentAlignment(horizontalLayout,Alignment.MIDDLE_CENTER);
+
 
         horizontalLayout.setComponentAlignment(ante,Alignment.MIDDLE_CENTER);
         horizontalLayout.setComponentAlignment(withdraw,Alignment.MIDDLE_CENTER);
@@ -142,8 +153,15 @@ public class IndividualAccountView extends HorizontalLayout implements View{
     }
 
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
-        client=clientsPresenter.searchByIdAndName(SessionUtil.getLoggedUserId(),SessionUtil.getLoggedUserName());
+
+        client = clientsPresenter.searchByIdAndName(SessionUtil.getLoggedUserId(),SessionUtil.getLoggedUserName());
+
+        nameText.setValue("Witaj "+client.getName()+" "+client.getSurname());
         ballanceText.setValue("Saldo: " + client.getBallance());
-        nameText.setValue("Witaj "+client.getName()+" "+client.getSurname()+"!");
+        //Tu jest pojebane bo nie zapisuje zmiany danych na stałe w bazie danych tylko tam, gdzie to jest mapowane
+        // dlatego zamiast ostatniej daty logowania jest aktualna
+        lastLogin = LocalDateTime.now();
+        client.setLastLogin(""+lastLogin.getDayOfWeek()+", "+lastLogin.getDayOfMonth()+" "+lastLogin.getMonth()+", AT: "+lastLogin.getHour()+"."+lastLogin.getMinute());
+        lastLoginTimeAndDate.setValue("LAST LOGIN: " + client.getLastLogin());
     }
 }
