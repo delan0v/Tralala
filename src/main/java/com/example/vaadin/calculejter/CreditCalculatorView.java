@@ -1,5 +1,6 @@
 package com.example.vaadin.calculejter;
 
+import com.example.util.DoubleEquals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.format.annotation.NumberFormat;

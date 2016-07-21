@@ -1,6 +1,7 @@
 package com.example.vaadin.calculejter;
 
 import com.example.vaadin.ViewNames;
+import com.google.gwt.i18n.shared.CustomDateTimeFormat;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.annotation.PostConstruct;
+import javax.validation.constraints.Pattern;
 
 /**
  * Created by Błażej on 21.06.2016.
@@ -63,6 +65,7 @@ public class CelFahrCalcuatorView extends VerticalLayout implements View {
         obliczFahrenheity.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
+
                 equals.setValue(calculate.celciusToFahrenheit(number.getValue()));
             }
         }

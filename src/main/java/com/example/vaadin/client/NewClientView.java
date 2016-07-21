@@ -14,6 +14,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.annotation.PostConstruct;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * Created by Błażej on 03.06.2016.
@@ -31,6 +34,8 @@ public class NewClientView extends HorizontalLayout implements View, Button.Clic
     private TextArea number;
     private VerticalLayout verticalLayout;
     private SessionUtil sessionUtil;
+    private Pattern passwordPattern;
+    private Matcher matcher;
 
     @Autowired
     private ClientsPresenter clientsPresenter;
@@ -44,6 +49,7 @@ public class NewClientView extends HorizontalLayout implements View, Button.Clic
     @PostConstruct
     private void initView() {
         verticalLayout = new VerticalLayout();
+        passwordPattern = Pattern.compile("([a-zA-Z]{0,10}[0,9]{0,10})*");
 
         out = new Button("Cofnij");
         out.setWidth("125");
@@ -102,19 +108,26 @@ public class NewClientView extends HorizontalLayout implements View, Button.Clic
     }
 
     @Override
-    public void buttonClick(Button.ClickEvent event) {
+    public void buttonClick(Button.ClickEvent event){
         if (event.getButton() == out) {
             getUI().getNavigator().navigateTo(ViewNames.ACCOUNT);
         } else if (event.getButton() == newUser) {
             try {
 
                 Clients clients=new Clients();
+                matcher = passwordPattern.matcher(password.getValue());
+               if(!matcher.matches()){
+                   throw new PatternSyntaxException("","",1);
+               }
                 clientsPresenter.newClient(clients,name.getValue(),surname.getValue(),number.getValue(),login.getValue(),password.getValue());
                 clientsPresenter.addNewClient(clients);
                 sessionUtil.setLoggedUser(clients.getId(),clients.getName());
                 getUI().getNavigator().navigateTo(ViewNames.INDIVIDUAL_ACCOUNT);
-
-            } catch(Exception e){
+            }
+            catch(PatternSyntaxException e){
+                Notification.show("Hasło musi być złożone z małych bądź dużych liter i co najmniej jednej liczby");
+            }
+            catch(Exception e){
                 e.printStackTrace();
             }
         }

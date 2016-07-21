@@ -10,11 +10,13 @@ import com.vaadin.spring.annotation.SpringView;
 import com.vaadin.ui.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 /**
@@ -37,8 +39,7 @@ public class IndividualAccountView extends HorizontalLayout implements View{
     private VerticalLayout verticalLayout;
     private HorizontalLayout horizontalLayout;
     private LocalDateTime lastLogin;
-
-    @NumberFormat(pattern = "###.##")
+    private DateTimeFormatter dateTimeFormatter;
     private Float ballance;
 
     public IndividualAccountView() {
@@ -50,14 +51,18 @@ public class IndividualAccountView extends HorizontalLayout implements View{
     public void loadClient(){
 
         client = new Clients();
+        lastLogin = LocalDateTime.now();
         verticalLayout = new VerticalLayout();
         horizontalLayout = new HorizontalLayout();
+        dateTimeFormatter=DateTimeFormatter.RFC_1123_DATE_TIME;
 
         out = new Button("Cofnij");
         out.setWidth("125");
         out.setHeight("30");
         out.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
+                client.setLastLogin(String.valueOf(dateTimeFormatter));
+                clientsPresenter.updateClients(client);
                 getUI().getNavigator().navigateTo(ViewNames.MAINVIEW_VIEW);
             }
         });
@@ -158,10 +163,11 @@ public class IndividualAccountView extends HorizontalLayout implements View{
 
         nameText.setValue("Witaj "+client.getName()+" "+client.getSurname());
         ballanceText.setValue("Saldo: " + client.getBallance());
-        //Tu jest pojebane bo nie zapisuje zmiany danych na stałe w bazie danych tylko tam, gdzie to jest mapowane
-        // dlatego zamiast ostatniej daty logowania jest aktualna
-        lastLogin = LocalDateTime.now();
-        client.setLastLogin(""+lastLogin.getDayOfWeek()+", "+lastLogin.getDayOfMonth()+" "+lastLogin.getMonth()+", AT: "+lastLogin.getHour()+"."+lastLogin.getMinute());
-        lastLoginTimeAndDate.setValue("LAST LOGIN: " + client.getLastLogin());
+        if(client.getLastLogin()!=null) {
+            lastLoginTimeAndDate.setValue("LAST LOGIN: " + client.getLastLogin());
+        }
+        else{
+            lastLoginTimeAndDate.setValue("FIRST LOGIN");
+        }
     }
 }

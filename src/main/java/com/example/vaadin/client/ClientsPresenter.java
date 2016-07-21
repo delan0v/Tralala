@@ -41,6 +41,10 @@ public class ClientsPresenter {
 
     }
 
+    public void updateClients(Clients client){
+        clientsService.updateClient(client);
+    }
+
     public void newClient(Clients clients, String name, String surname, String number, String login, String password){
         clients.setName(name);
         clients.setSurname(surname);

@@ -1,5 +1,6 @@
 package com.example.vaadin.calculejter;
 
+import com.example.util.DoubleEquals;
 import com.example.vaadin.calculejter.exception.BadValuesException;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,7 @@ public class CalculatorPresenter {
             throw new BadValuesException();
         }
         if (month == 1){
-            return cash + cash * percent / 100;
+            return DoubleEquals.convertFromDouble(cash + cash * percent / 100);
         }
 
         cash += cash * percent / 100;
