@@ -40,7 +40,7 @@
             <xs:element name="number" type="xs:string"/>
             <xs:element name="login" type="xs:string"/>
             <xs:element name="password" type="xs:string"/>
-            <xs:element name="ballance" type="xs:float"/>
+            <xs:element name="ballance" type="xs:double"/>
             <xs:element name="time" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>

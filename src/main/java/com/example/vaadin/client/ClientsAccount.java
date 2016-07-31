@@ -82,11 +82,15 @@ public class ClientsAccount extends HorizontalLayout implements View {
             public void buttonClick(Button.ClickEvent event) {
                 Clients clients = (Clients) loginNativeSelect.getValue();
                 if (clients == null) {
-                    loginNativeSelect.setValue("Popełniłeś błąd podczas logowania");
+                    password.setValue("Popełniłeś błąd podczas logowania");
                 } else {
-                    if (password.getValue().equals(clients.getPassword())) {
+                    if ((password.getValue()).equals(clients.getPassword())) {
                         SessionUtil.setLoggedUser(clients.getId(), clients.getName());
                         getUI().getNavigator().navigateTo(ViewNames.INDIVIDUAL_ACCOUNT);
+                    }
+                    else{
+                        Notification.show("Podałeś błędne hasło");
+                        password.setValue("");
                     }
                 }
             }

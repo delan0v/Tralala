@@ -51,7 +51,7 @@ public class ClientsPresenter {
         clients.setNumber(number);
         clients.setLogin(login);
         clients.setPassword(password);
-        clients.setBallance((float) 0);
+        clients.setBallance(0.0);
         clients.setLastLogin("Pierwsze uruchomienie");
 
     }

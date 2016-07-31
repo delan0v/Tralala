@@ -37,9 +37,9 @@ public class Clients {
     private String password;
 
     @Column(name = "ballance")
-    private Float ballance;
+    private Double ballance;
 
-    @Column(name="time")
+    @Column(name="lastLogin")
     private String lastLogin;
 
     //NIEZBĘDNE GETTERY i SETTERY oraz EQUALS HASHCODE i TOSTRING
@@ -60,11 +60,11 @@ public class Clients {
         this.password = password;
     }
 
-    public Float getBallance() {
+    public Double getBallance() {
         return ballance;
     }
 
-    public void setBallance(Float ballance) {
+    public void setBallance(Double ballance) {
         this.ballance = ballance;
     }
     public String getNumber() {return number;}

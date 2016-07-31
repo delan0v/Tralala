@@ -40,7 +40,7 @@ public class IndividualAccountView extends HorizontalLayout implements View{
     private HorizontalLayout horizontalLayout;
     private LocalDateTime lastLogin;
     private DateTimeFormatter dateTimeFormatter;
-    private Float ballance;
+    private Double ballance;
 
     public IndividualAccountView() {
         setMargin(true);
