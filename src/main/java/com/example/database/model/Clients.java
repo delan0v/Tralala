@@ -39,7 +39,7 @@ public class Clients {
     @Column(name = "ballance")
     private Double ballance;
 
-    @Column(name="lastLogin")
+    @Column(name="time")
     private String lastLogin;
 
     //NIEZBĘDNE GETTERY i SETTERY oraz EQUALS HASHCODE i TOSTRING

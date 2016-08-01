@@ -10,24 +10,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class DegreeCalculator {
 
-    @NumberFormat(pattern = "###.##")
-    private Double temperature;
-
     public String celciusToFahrenheit(String celcius) {
         try {
-            temperature = DoubleEquals.convertFromDouble((Double.parseDouble(celcius) * 1.8) + 32);
-
-            return (String.valueOf(temperature));
+            return DoubleEquals.convertFromDouble((Double.parseDouble(celcius) * 1.8) + 32);
         } catch (NumberFormatException e) {
             return ("Ustawiłeś złe dane");
         } catch (Exception e) {
             return ("Coś sie zjebało");
         }
     }
-    public String fafrenheitToCelcius(String fahrenheit) {
+    public String fahrenheitToCelcius(String fahrenheit) {
         try {
-            temperature = DoubleEquals.convertFromDouble((Double.parseDouble(fahrenheit) - 32) / 1.8);
-            return (String.valueOf(temperature));
+            return DoubleEquals.convertFromDouble((Double.parseDouble(fahrenheit) - 32) / 1.8);
         } catch (NumberFormatException e) {
             return ("Ustawiłeś złe dane");
         } catch (Exception e) {

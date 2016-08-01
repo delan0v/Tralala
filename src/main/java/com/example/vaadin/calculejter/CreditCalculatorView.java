@@ -78,13 +78,11 @@ public class CreditCalculatorView extends VerticalLayout implements View {
         calculate.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event2) {
-                money = 0.0;
                 try {
-                    money = calculatorPresenter.calculateCredit(textCash.getValue(), textTime.getValue(), textPercent.getValue());
+                    textEquals.setValue(calculatorPresenter.calculateCredit(textCash.getValue(), textTime.getValue(), textPercent.getValue()));
                 } catch (BadValuesException e) {
                     textEquals.setValue("Podałeś złe wartości");
                 }
-                textEquals.setValue(Double.toString(money));
             }
         });
 

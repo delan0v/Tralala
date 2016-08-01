@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CalculatorPresenter {
 
-    public Double calculateCredit(String cashString, String monthString, String percentString) throws BadValuesException {
+    public String calculateCredit(String cashString, String monthString, String percentString) throws BadValuesException {
         Double cash = Double.parseDouble(cashString);
         int month = Integer.parseInt(monthString);
         Double percent = Double.parseDouble(percentString);
