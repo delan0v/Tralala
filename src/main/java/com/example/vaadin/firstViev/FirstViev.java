@@ -39,7 +39,7 @@ public class FirstViev extends VerticalLayout implements View {
         firstMenu.setValue("Wybierz usługę:");
         firstMenu.setWidth("140");
         firstMenu.setHeight("30");
-        firstMenu.addStyleName("MyStyle");// gówno się zmienia a nie styl styl
+        firstMenu.addStyleName("mystle");// gówno się zmienia a nie styl styl
 
         clientAcc = new Button("Twoje konto");
         clientAcc.setWidth("200");

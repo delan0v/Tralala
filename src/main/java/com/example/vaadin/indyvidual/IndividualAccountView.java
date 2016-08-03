@@ -138,7 +138,7 @@ public class IndividualAccountView extends HorizontalLayout implements View{
                     ballanceText.setValue("Brak środków na koncie!");
                 }
             } catch(NumberFormatException e){
-                changeMoney.setValue("Podałeś złą wartość!");
+                ballanceText.setValue("Podałeś złą wartość!");
             } catch(Exception e) {
                 changeMoney.setValue("Error!");
             }

@@ -49,7 +49,7 @@ public class NewClientView extends HorizontalLayout implements View, Button.Clic
     @PostConstruct
     private void initView() {
         verticalLayout = new VerticalLayout();
-        passwordPattern = Pattern.compile("([a-zA-Z]{0,10}[0,9]{0,10})*");
+        passwordPattern = Pattern.compile("([a-zA-Z0-9]{5,15})");
 
         out = new Button("Cofnij");
         out.setWidth("125");
@@ -119,13 +119,14 @@ public class NewClientView extends HorizontalLayout implements View, Button.Clic
                if(!matcher.matches()){
                    throw new PatternSyntaxException("","",1);
                }
+               Notification.show("Dobre hasło");
                 clientsPresenter.newClient(clients,name.getValue(),surname.getValue(),number.getValue(),login.getValue(),password.getValue());
                 clientsPresenter.addNewClient(clients);
                 sessionUtil.setLoggedUser(clients.getId(),clients.getName());
                 getUI().getNavigator().navigateTo(ViewNames.INDIVIDUAL_ACCOUNT);
             }
             catch(PatternSyntaxException e){
-                Notification.show("Hasło musi być złożone z małych bądź dużych liter i co najmniej jednej liczby");
+                Notification.show("Hasło powinno składać się z od 5 do 15 znaków. Dopuszczalne znaki to: cyfry i małe bądź duże litery.");
             }
             catch(Exception e){
                 e.printStackTrace();
