@@ -1,8 +1,6 @@
-package com.example.vaadin.Calculejter;
+package com.example.vaadin.calculator;
 
-import com.example.vaadin.calculejter.CalculatorPresenter;
-import com.example.vaadin.calculejter.DegreeCalculator;
-import com.example.vaadin.calculejter.exception.BadValuesException;
+import com.example.util.exception.BadValuesException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,7 +9,7 @@ import org.junit.Test;
  */
 public class CreditCalculatorTest {
 
-    private static CalculatorPresenter calculatorPresenter = new CalculatorPresenter();
+    private CalculatorPresenter calculatorPresenter = new CalculatorPresenter();
 
     @Test
     public void creditCalculatorTest() throws BadValuesException {

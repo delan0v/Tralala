@@ -1,12 +1,11 @@
-package com.example.vaadin.calculejter;
+package com.example.vaadin.calculator;
 
-import com.example.util.DoubleEquals;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.format.annotation.NumberFormat;
 
 import com.example.vaadin.ViewNames;
-import com.example.vaadin.calculejter.exception.BadValuesException;
+import com.example.util.exception.BadValuesException;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.spring.annotation.SpringView;

@@ -1,8 +1,7 @@
-package com.example.vaadin.calculejter;
+package com.example.vaadin.calculator;
 
 import com.example.util.DoubleEquals;
-import com.example.vaadin.calculejter.exception.BadValuesException;
-import org.springframework.format.annotation.NumberFormat;
+import com.example.util.exception.BadValuesException;
 import org.springframework.stereotype.Component;
 
 /**

@@ -1,4 +1,4 @@
-package com.example.vaadin.calculejter.exception;
+package com.example.util.exception;
 
 /**
  * Created by Błażej on 04.07.2016.

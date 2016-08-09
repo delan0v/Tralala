@@ -3,7 +3,6 @@ package com.example.util;
 /**
  * Created by pkaczmar on 2016-07-02.
  */
-// TODO Zastosować Pattern - wzorzec projektowy - Singletone
 public class SessionUtil {
 
 	private static Integer loggedUserId;

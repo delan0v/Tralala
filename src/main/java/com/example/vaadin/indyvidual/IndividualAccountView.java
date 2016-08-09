@@ -62,7 +62,7 @@ public class IndividualAccountView extends HorizontalLayout implements View{
         out.addClickListener(new Button.ClickListener() {
             public void buttonClick(Button.ClickEvent event) {
                 client.setLastLogin(String.valueOf(dateTimeFormatter));
-                clientsPresenter.updateClients(client);
+               // clientsPresenter.updateClients(client);
                 getUI().getNavigator().navigateTo(ViewNames.MAINVIEW_VIEW);
             }
         });
@@ -122,7 +122,6 @@ public class IndividualAccountView extends HorizontalLayout implements View{
         verticalLayout.setComponentAlignment(changeMoney,Alignment.MIDDLE_CENTER);
         verticalLayout.setComponentAlignment(horizontalLayout,Alignment.MIDDLE_CENTER);
 
-
         horizontalLayout.setComponentAlignment(ante,Alignment.MIDDLE_CENTER);
         horizontalLayout.setComponentAlignment(withdraw,Alignment.MIDDLE_CENTER);
     }
@@ -154,7 +153,6 @@ public class IndividualAccountView extends HorizontalLayout implements View{
                 changeMoney.setValue("Error!");
             }
         }
-
     }
 
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {

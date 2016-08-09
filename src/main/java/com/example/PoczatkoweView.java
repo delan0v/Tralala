@@ -1,13 +1,14 @@
 package com.example;
 
-import com.example.vaadin.calculejter.CelFahrCalcuatorView;
+import com.example.vaadin.other.OtherView;
+import com.example.vaadin.other.temperatureCalculator.CelFahrCalcuatorView;
 import com.example.vaadin.client.ClientsAccount;
 import com.example.vaadin.indyvidual.IndividualAccountView;
 import com.example.vaadin.client.NewClientView;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.vaadin.ViewNames;
-import com.example.vaadin.calculejter.CreditCalculatorView;
+import com.example.vaadin.calculator.CreditCalculatorView;
 import com.example.vaadin.client.DataBaseClientsView;
 import com.example.vaadin.firstViev.FirstViev;
 import com.example.vaadin.offers.ContoOfferts;
@@ -38,10 +39,12 @@ public class PoczatkoweView extends UI {
     private IndividualAccountView individualAccountView;
     @Autowired
     private CelFahrCalcuatorView celFahrCalc;
+    @Autowired
+    private OtherView otherView;
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        getPage().setTitle("JeBaDło Bank S.A.");
+        getPage().setTitle("Bank Rolski S.A.");
 
         navigator = new Navigator(this, this);
         navigator.addView(ViewNames.MAINVIEW_VIEW, firstViev);
@@ -52,6 +55,8 @@ public class PoczatkoweView extends UI {
         navigator.addView(ViewNames.NEW_ACCOUNT, newClientView);
         navigator.addView(ViewNames.INDIVIDUAL_ACCOUNT, individualAccountView);
         navigator.addView(ViewNames.CELCIUSTOFAHRENHEIT_VIEV, celFahrCalc);
+        navigator.addView(ViewNames.DIFFERENT_ACTION,otherView);
+
     }
 
 }

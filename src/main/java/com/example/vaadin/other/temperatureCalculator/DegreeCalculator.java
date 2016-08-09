@@ -1,4 +1,4 @@
-package com.example.vaadin.calculejter;
+package com.example.vaadin.other.temperatureCalculator;
 
 import com.example.util.DoubleEquals;
 import org.springframework.format.annotation.NumberFormat;
@@ -16,7 +16,7 @@ public class DegreeCalculator {
         } catch (NumberFormatException e) {
             return ("Ustawiłeś złe dane");
         } catch (Exception e) {
-            return ("Coś sie zjebało");
+            return ("Coś sie popsuło");
         }
     }
     public String fahrenheitToCelcius(String fahrenheit) {
@@ -25,7 +25,7 @@ public class DegreeCalculator {
         } catch (NumberFormatException e) {
             return ("Ustawiłeś złe dane");
         } catch (Exception e) {
-            return ("Coś się zjebało");
+            return ("Coś się popsuło");
         }
     }
 }

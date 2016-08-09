@@ -8,8 +8,9 @@ public interface ViewNames {
     String KALKULATOR_VIEW = "calculator";
     String MAINVIEW_VIEW = "";
     String OFERTY_VIEW = "offerts";
-    String ACCOUNT="account";
-    String NEW_ACCOUNT="new_account";
-    String INDIVIDUAL_ACCOUNT="individual_ccount";
-    String CELCIUSTOFAHRENHEIT_VIEV="celcius_fahrenheit_calculator";
+    String ACCOUNT = "account";
+    String NEW_ACCOUNT = "new_account";
+    String INDIVIDUAL_ACCOUNT = "individual_ccount";
+    String CELCIUSTOFAHRENHEIT_VIEV = "celcius_fahrenheit_calculator";
+    String DIFFERENT_ACTION = "diffrent_view";
 }

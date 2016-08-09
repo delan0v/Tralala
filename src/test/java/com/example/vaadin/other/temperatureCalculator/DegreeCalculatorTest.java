@@ -1,7 +1,7 @@
-package com.example.vaadin.Calculejter;
+package com.example.vaadin.other.temperatureCalculator;
 
-import com.example.vaadin.calculejter.DegreeCalculator;
-import com.example.vaadin.calculejter.exception.BadValuesException;
+import com.example.vaadin.other.temperatureCalculator.DegreeCalculator;
+import com.example.util.exception.BadValuesException;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,7 +10,7 @@ import org.junit.Test;
  */
 public class DegreeCalculatorTest {
 
-    private static DegreeCalculator degreeCalculator = new DegreeCalculator();
+    private DegreeCalculator degreeCalculator = new DegreeCalculator();
 
     @Test
     public void temperatureCalculatorTest() throws BadValuesException {

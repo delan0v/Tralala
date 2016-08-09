@@ -18,7 +18,7 @@ public class FirstViev extends VerticalLayout implements View {
     private Button offers;
     private Button clientFromDB;
     private Button clientAcc;
-    private Button celciusFahrenheit;
+    private Button other;
     private TextField firstMenu;
     private TextField version;
 
@@ -81,13 +81,13 @@ public class FirstViev extends VerticalLayout implements View {
             }
         });
 
-        celciusFahrenheit = new Button("Temperatura");
-        celciusFahrenheit.setWidth("200");
-        celciusFahrenheit.setHeight("30");
-        celciusFahrenheit.addClickListener(new Button.ClickListener() {
+        other = new Button("Inne");
+        other.setWidth("200");
+        other.setHeight("30");
+        other.addClickListener(new Button.ClickListener() {
             @Override
             public void buttonClick(Button.ClickEvent event) {
-                getUI().getNavigator().navigateTo(ViewNames.CELCIUSTOFAHRENHEIT_VIEV);
+                getUI().getNavigator().navigateTo(ViewNames.DIFFERENT_ACTION);
         }
         });
 
@@ -96,7 +96,7 @@ public class FirstViev extends VerticalLayout implements View {
         addComponent(offers);
         addComponent(calculator);
         addComponent(clientFromDB);
-        addComponent(celciusFahrenheit);
+        addComponent(other);
         addComponent(version);
 
         setComponentAlignment(firstMenu, Alignment.MIDDLE_CENTER);
@@ -104,13 +104,13 @@ public class FirstViev extends VerticalLayout implements View {
         setComponentAlignment(offers, Alignment.MIDDLE_CENTER);
         setComponentAlignment(calculator, Alignment.MIDDLE_CENTER);
         setComponentAlignment(clientFromDB, Alignment.MIDDLE_CENTER);
-        setComponentAlignment(celciusFahrenheit, Alignment.MIDDLE_CENTER);
-        setComponentAlignment(celciusFahrenheit,Alignment.MIDDLE_CENTER);
+        setComponentAlignment(other, Alignment.MIDDLE_CENTER);
+        setComponentAlignment(other,Alignment.MIDDLE_CENTER);
         setComponentAlignment(version,Alignment.MIDDLE_CENTER);
     }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent viewChangeEvent) {
-        Notification.show("Profesionalnie ojebiemy Cie z kasy");
+        Notification.show("Witamy w naszym banku!");
     }
 }

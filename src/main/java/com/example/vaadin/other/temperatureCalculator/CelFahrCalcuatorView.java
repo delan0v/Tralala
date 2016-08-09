@@ -1,4 +1,4 @@
-package com.example.vaadin.calculejter;
+package com.example.vaadin.other.temperatureCalculator;
 
 import com.example.vaadin.ViewNames;
 import com.vaadin.navigator.View;

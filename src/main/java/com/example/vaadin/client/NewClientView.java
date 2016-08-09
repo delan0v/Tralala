@@ -50,6 +50,7 @@ public class NewClientView extends HorizontalLayout implements View, Button.Clic
     private void initView() {
         verticalLayout = new VerticalLayout();
         passwordPattern = Pattern.compile("([a-zA-Z0-9]{5,15})");
+        sessionUtil = new SessionUtil();
 
         out = new Button("Cofnij");
         out.setWidth("125");
