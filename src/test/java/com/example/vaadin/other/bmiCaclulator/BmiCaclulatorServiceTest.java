@@ -12,8 +12,8 @@ public class BmiCaclulatorServiceTest {
     private BmiCalculatorService bmiCalculatorService = new BmiCalculatorService();
 
     @Test
-    private void BmiCaclulatorServiceTest(){
+    public void bmiCaclulatorServiceTest(){
 
-        Assert.assertEquals("23,46",bmiCalculatorService.calculateBmi("180","76"));
+        Assert.assertEquals("23,46",bmiCalculatorService.calculateBmi("76","180"));
     }
 }
