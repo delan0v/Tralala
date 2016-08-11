@@ -2,8 +2,6 @@ package com.example.vaadin.calculator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.format.annotation.NumberFormat;
-
 import com.example.vaadin.ViewNames;
 import com.example.util.exception.BadValuesException;
 import com.vaadin.navigator.View;
@@ -31,8 +29,6 @@ public class CreditCalculatorView extends VerticalLayout implements View {
 
     @Autowired
     private CalculatorPresenter calculatorPresenter;
-    @NumberFormat(pattern = "###.##")
-    private Double money;
 
     public CreditCalculatorView() {
         setMargin(true);

@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.vaadin.other.bmiCalculator.BmiCalculatorView;
 import com.example.vaadin.other.OtherView;
 import com.example.vaadin.other.temperatureCalculator.CelFahrCalcuatorView;
 import com.example.vaadin.client.ClientsAccount;
@@ -41,6 +42,8 @@ public class PoczatkoweView extends UI {
     private CelFahrCalcuatorView celFahrCalc;
     @Autowired
     private OtherView otherView;
+    @Autowired
+    private BmiCalculatorView bmiCalculatorView;
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -56,6 +59,7 @@ public class PoczatkoweView extends UI {
         navigator.addView(ViewNames.INDIVIDUAL_ACCOUNT, individualAccountView);
         navigator.addView(ViewNames.CELCIUSTOFAHRENHEIT_VIEV, celFahrCalc);
         navigator.addView(ViewNames.DIFFERENT_ACTION,otherView);
+        navigator.addView(ViewNames.BMI_CALCULATOR,bmiCalculatorView);
 
     }
 

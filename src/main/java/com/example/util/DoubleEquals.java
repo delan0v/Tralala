@@ -10,6 +10,7 @@ public class  DoubleEquals {
     public static DecimalFormat decimalFormat = new DecimalFormat("0.00");
 
     public static String convertFromString(String numberString){
+
         return convertFromDouble(Double.parseDouble(numberString));
     }
     public static String convertFromDouble(Double numberDouble){

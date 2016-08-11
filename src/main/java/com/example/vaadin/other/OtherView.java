@@ -21,7 +21,8 @@ public class OtherView extends VerticalLayout implements View {
 
     private Button out;
     private Button temperatureCalculator;
-    private HorizontalLayout horizontalLayout;
+    private Button bmiCalculator;
+    private VerticalLayout verticalLayout;
 
     public OtherView(){
         setMargin(true);
@@ -31,7 +32,7 @@ public class OtherView extends VerticalLayout implements View {
     @PostConstruct
     private void InitView(){
 
-        horizontalLayout = new HorizontalLayout();
+        verticalLayout = new VerticalLayout();
 
         out = new Button("Cofnij");
         out.setWidth("125");
@@ -51,13 +52,20 @@ public class OtherView extends VerticalLayout implements View {
             }
         });
 
+        bmiCalculator = new Button("Kalkulator BMI");
+        bmiCalculator.addClickListener(event -> {
+            getUI().getNavigator().navigateTo(ViewNames.BMI_CALCULATOR);
+        });
+
         addComponent(out);
-        addComponent(horizontalLayout);
-        horizontalLayout.addComponent(temperatureCalculator);
+        addComponent(verticalLayout);
+        verticalLayout.addComponent(temperatureCalculator);
+        verticalLayout.addComponent(bmiCalculator);
 
         setComponentAlignment(out, Alignment.TOP_LEFT);
-        setComponentAlignment(horizontalLayout,Alignment.TOP_CENTER);
-        horizontalLayout.setComponentAlignment(temperatureCalculator,Alignment.TOP_CENTER);
+        setComponentAlignment(verticalLayout,Alignment.TOP_CENTER);
+        verticalLayout.setComponentAlignment(temperatureCalculator,Alignment.MIDDLE_CENTER);
+        verticalLayout.setComponentAlignment(bmiCalculator,Alignment.MIDDLE_CENTER);
     }
 
 

@@ -13,4 +13,5 @@ public interface ViewNames {
     String INDIVIDUAL_ACCOUNT = "individual_ccount";
     String CELCIUSTOFAHRENHEIT_VIEV = "celcius_fahrenheit_calculator";
     String DIFFERENT_ACTION = "diffrent_view";
+    String BMI_CALCULATOR = "bmi_calculator";
 }

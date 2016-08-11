@@ -44,7 +44,7 @@ public class CelFahrCalcuatorView extends VerticalLayout implements View {
             public void buttonClick(Button.ClickEvent event) {
                 number.setValue("");
                 equals.setValue("");
-                getUI().getNavigator().navigateTo(ViewNames.MAINVIEW_VIEW);
+                getUI().getNavigator().navigateTo(ViewNames.DIFFERENT_ACTION);
             }
         });
 
