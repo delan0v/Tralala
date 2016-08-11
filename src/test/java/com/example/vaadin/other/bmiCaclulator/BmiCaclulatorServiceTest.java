@@ -15,5 +15,8 @@ public class BmiCaclulatorServiceTest {
     public void bmiCaclulatorServiceTest(){
 
         Assert.assertEquals("23,46",bmiCalculatorService.calculateBmi("76","180"));
+        Assert.assertEquals("48,89",bmiCalculatorService.calculateBmi("100.59432","143.43534"));
+        Assert.assertEquals("Podałeś złe wartośći",bmiCalculatorService.calculateBmi("test","180"));
+        Assert.assertEquals("Podałeś złe wartośći",bmiCalculatorService.calculateBmi("76","test"));
     }
 }

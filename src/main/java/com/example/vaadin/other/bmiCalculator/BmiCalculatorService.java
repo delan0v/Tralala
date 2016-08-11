@@ -10,7 +10,7 @@ public class BmiCalculatorService {
 
     public String calculateBmi(String weigth, String height){
         try {
-            return DoubleEquals.convertFromDouble(Double.parseDouble(weigth) / Math.pow(Double.parseDouble(height),2));
+            return DoubleEquals.convertFromDouble(Double.parseDouble(weigth) / Math.pow(Double.parseDouble(height)/100,2));
         }
         catch(IllegalArgumentException e){
             return "Podałeś złe wartośći";
