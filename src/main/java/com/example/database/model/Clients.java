@@ -3,24 +3,24 @@ package com.example.database.model;
 import javax.persistence.*;
 import javax.print.attribute.IntegerSyntax;
 
-//Adnotacja @Entity mówi Springowi że ta klasa jest częscią ORM czyli ma tę klasę mapować
-// na tabelkę z bazy danych.
-//Adnotacja @Table oznacza tabelkę w bazie danych: name = "nazwa tabelki w bazie"
+/**
+ * Adnotacja @Entity mówi Springowi że ta klasa jest częscią ORM czyli ma tę klasę mapować
+ * na tabelkę z bazy danych.
+ * Adnotacja @Table oznacza tabelkę w bazie danych: name = "nazwa tabelki w bazie"
+ */
 @Entity
 @Table(name = "CLIENTS")
 public class Clients {
 
-    // Id ponieważ w bazie danych oznaczyłem tę kolumne jako PRIVATE KEY czyli
-    // klucz główny
-    // Generated Value ponieważ dodałem sekwencję jako, że za każdym razem nowy
-    // wiersz w tabeli
-    // będzie mieć nową wartość większą o 1. :) Z automatu.
+/**
+ * Id ponieważ w bazie danych oznaczyłem tę kolumne jako PRIVATE KEY czyli
+ * klucz główny
+ */
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    // Oznaczenie, jak ta kolumna w tej tabeli się nazywa ;)
     @Column(name = "name")
     private String name;
 
@@ -42,8 +42,10 @@ public class Clients {
     @Column(name="time")
     private String lastLogin;
 
-    //NIEZBĘDNE GETTERY i SETTERY oraz EQUALS HASHCODE i TOSTRING
-    // Obowiązkowe pola każdego obiektu.
+    /**
+    *  NIEZBĘDNE GETTERY i SETTERY oraz EQUALS HASHCODE i TOSTRING
+    *  Obowiązkowe pola każdego obiektu.
+    */
     public String getLogin() {
         return login;
     }

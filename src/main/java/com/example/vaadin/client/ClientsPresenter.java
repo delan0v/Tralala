@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * Created by pkaczmar on 2016-05-27.
+ * Klasa odpowiedzialna za pobieranie danych klienta z bazy danych
  */
 @UIScope
 @Component
@@ -36,7 +36,7 @@ public class ClientsPresenter {
         }
         catch(Exception e){
             e.printStackTrace();
-            Notification.show("Wyjebało wszystko", Notification.Type.ERROR_MESSAGE);
+            Notification.show("Jest jakiś problem", Notification.Type.ERROR_MESSAGE);
         }
 
     }

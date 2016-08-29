@@ -2,6 +2,7 @@ package com.example.util.version;
 
 /**
  * Created by Błażej on 15.07.2016.
+ * Stosuję wzorzec singleton
  */
 public class SystemVersion {
     private static SystemVersion systemVersion = null;

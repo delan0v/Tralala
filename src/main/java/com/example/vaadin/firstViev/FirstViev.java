@@ -1,6 +1,7 @@
 package com.example.vaadin.firstViev;
 
 import com.example.util.version.SystemVersion;
+import com.vaadin.server.ClassResource;
 import com.vaadin.ui.*;
 import org.springframework.context.annotation.Scope;
 import com.example.vaadin.ViewNames;
@@ -39,7 +40,7 @@ public class FirstViev extends VerticalLayout implements View {
         firstMenu.setValue("Wybierz usługę:");
         firstMenu.setWidth("140");
         firstMenu.setHeight("30");
-        firstMenu.addStyleName("mystle");// gówno się zmienia a nie styl styl
+        firstMenu.addStyleName("mystle");
 
         clientAcc = new Button("Twoje konto");
         clientAcc.setWidth("200");

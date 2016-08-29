@@ -53,7 +53,8 @@ public class BmiCalculatorView extends VerticalLayout implements View {
         calculate = new Button("Oblicz");
         calculate.setHeight("30");
         calculate.setWidth("400");
-        calculate.addClickListener((event -> {equals.setValue("Twoje BMI wynosi" + bmiCalculatorService.calculateBmi(weight.getValue(),heigth.getValue()));}));
+        calculate.addClickListener((event -> {equals.setValue(bmiCalculatorService.calculateBmi(weight.getValue(),heigth.getValue()));
+        }));
 
         addComponent(out);
         addComponent(horizontalLayout);

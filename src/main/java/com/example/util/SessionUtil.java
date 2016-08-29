@@ -1,7 +1,7 @@
 package com.example.util;
 
 /**
- * Created by pkaczmar on 2016-07-02.
+ * Klasa posiadająca statyczne metody potrzebne do kojarzenia
  */
 public class SessionUtil {
 

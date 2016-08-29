@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Created by Błażej on 01.07.2016.
+ * Klasa odpowiedzialna za logikę kalkulatora kredytowego
  */
 @Component
 public class CalculatorPresenter {

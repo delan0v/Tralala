@@ -11,7 +11,6 @@ ALTER TABLE clients
   OWNER TO postgres;
 
 -- Tworzenie sekwencji w celu automatycznego inkrementowania wartości ID
--- Taka jest praktyka, dzięki temu nie bedziesz miał dwóch klientów z tym samym ID
 CREATE SEQUENCE id_clients_seq
 START WITH 1
 INCREMENT BY 1
@@ -22,8 +21,6 @@ CACHE 1;
 ALTER TABLE id_clients_seq
   OWNER TO postgres;
 ALTER SEQUENCE id_clients_seq OWNED BY clients.id;
--- Ustawiam politykę nowej wartości nexval() - czyli ustawiam, że jeśli nie ma podanej wartości id
--- to ma ustawić kolejną wartość ze sekwensji id_clients_seq
 ALTER TABLE ONLY clients
   ALTER COLUMN id SET DEFAULT nextval(
     'id_clients_seq' :: REGCLASS);
@@ -34,4 +31,4 @@ ALTER TABLE ONLY clients
 INSERT INTO clients VALUES (1, 'Jan', 'Nowak',000000,'JanNiezbedny','jan09',300,"");
 INSERT INTO clients VALUES (2, 'Jan', 'Kowalski',222333,'Kowal96','kowal',5000,"");
 --Ustawiam wartość sekwencji, ponieważ sam dodałem 4 wartości i od tej 4 musi teraz dalej dodawać.
-SELECT pg_catalog.setval('id_clients_seq', 4, TRUE);
+SELECT pg_catalog.setval('id_clients_seq', 3, TRUE);

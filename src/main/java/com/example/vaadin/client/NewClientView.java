@@ -20,6 +20,7 @@ import java.util.regex.PatternSyntaxException;
 
 /**
  * Created by Błażej on 03.06.2016.
+ * Klasa odpowiedzialna za widok strony tworzenia nowego klienta
  */
 @SpringView(name = ViewNames.NEW_ACCOUNT)
 @Scope("prototype")

@@ -45,6 +45,8 @@ public class OtherView extends VerticalLayout implements View {
         });
 
         temperatureCalculator = new Button("Kalkulator temperatur");
+        temperatureCalculator.setWidth("250");
+        temperatureCalculator.setHeight("30");
         temperatureCalculator.addClickListener(new Button.ClickListener(){
             @Override
             public void buttonClick(Button.ClickEvent event) {
@@ -53,6 +55,8 @@ public class OtherView extends VerticalLayout implements View {
         });
 
         bmiCalculator = new Button("Kalkulator BMI");
+        bmiCalculator.setWidth("250");
+        bmiCalculator.setHeight("30");
         bmiCalculator.addClickListener(event -> {
             getUI().getNavigator().navigateTo(ViewNames.BMI_CALCULATOR);
         });
@@ -63,7 +67,7 @@ public class OtherView extends VerticalLayout implements View {
         verticalLayout.addComponent(bmiCalculator);
 
         setComponentAlignment(out, Alignment.TOP_LEFT);
-        setComponentAlignment(verticalLayout,Alignment.TOP_CENTER);
+        setComponentAlignment(verticalLayout,Alignment.MIDDLE_CENTER);
         verticalLayout.setComponentAlignment(temperatureCalculator,Alignment.MIDDLE_CENTER);
         verticalLayout.setComponentAlignment(bmiCalculator,Alignment.MIDDLE_CENTER);
     }

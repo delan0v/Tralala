@@ -19,6 +19,7 @@ import java.util.List;
 
 /**
  * Created by Błażej on 03.06.2016.
+ * Klasa odpowiedzialna za widok strony logowania
  */
 @SpringView(name = ViewNames.ACCOUNT)
 @Scope("prototype")

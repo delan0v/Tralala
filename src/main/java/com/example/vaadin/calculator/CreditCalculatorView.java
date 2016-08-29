@@ -12,7 +12,7 @@ import com.vaadin.ui.*;
 import javax.annotation.PostConstruct;
 
 /**
- * Created by pkaczmar on 2016-05-26.
+ * Klasa odpowiedzialna za widok strony kalkulatora
  */
 @SpringView(name = ViewNames.KALKULATOR_VIEW)
 @Scope("prototype")

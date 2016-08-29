@@ -4,9 +4,6 @@ import com.example.database.model.Clients;
 
 import java.util.List;
 
-/**
- * Created by pkaczmar on 2016-05-27.
- */
 public interface ClientsService {
 
     void addClient(Clients clients);
